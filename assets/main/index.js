@@ -1,52 +1,3165 @@
-System.register("chunks:///_virtual/AudioManager.ts",["./rollupPluginModLoBabelHelpers.js","cc","./BaseManager.ts"],(function(o){"use strict";var e,n,r,i,a,t,s,u,c,l;return{setters:[function(o){e=o.applyDecoratedDescriptor,n=o.inheritsLoose,r=o.initializerDefineProperty,i=o.assertThisInitialized},function(o){a=o.cclegacy,t=o._decorator,s=o.AudioSource,u=o.resources,c=o.AudioClip},function(o){l=o.BaseManager}],execute:function(){var d,p,f,h,g;a._RF.push({},"15149Zx5LdC47Gsa+4kWRfN","AudioManager",void 0);var y=t.ccclass,S=t.property;o("AudioManager",(d=y("AudioManager"),p=S(s),d((g=e((h=function(o){function e(){for(var e,n=arguments.length,a=new Array(n),t=0;t<n;t++)a[t]=arguments[t];return(e=o.call.apply(o,[this].concat(a))||this)._soundMap=new Map,e._sfxSources=[],r(e,"audioSFXSource",g,i(e)),e}n(e,o);var a=e.prototype;return a.onLoad=function(){o.prototype.onLoad.call(this),this.loadAllSounds()},a.loadAllSounds=function(){var o=this;u.loadDir("Audios",c,(function(e,n){e?console.error("❌ Error loading audios:",e):n.forEach((function(e){o._soundMap.set(e.name,e)}))}))},a.playSFXEffect=function(o,e){void 0===e&&(e=1);var n=this._soundMap.get(o);if(n){var r=this._sfxSources.find((function(o){return!o.playing}));r||(r=this.node.addComponent(s),this._sfxSources.push(r)),r.playOneShot(n,e)}else console.warn("⚠️ Can't find audio with key: "+o)},e}(l)).prototype,"audioSFXSource",[p],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),f=h))||f));a._RF.pop()}}}));
+System.register("chunks:///_virtual/AudioManager.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './BaseManager.ts'], function (exports) {
+  'use strict';
 
-System.register("chunks:///_virtual/BaseManager.ts",["./rollupPluginModLoBabelHelpers.js","cc"],(function(e){"use strict";var n,t,s,a,o,i,r;return{setters:[function(e){n=e.inheritsLoose,t=e.createClass},function(e){s=e.cclegacy,a=e._decorator,o=e.director,i=e.Node,r=e.Component}],execute:function(){var c,h;s._RF.push({},"3a357hdv7VEHIxDeBLnWsKQ","BaseManager",void 0);var d=a.ccclass;e("BaseManager",d("BaseManager")(((h=function(e){function s(){return e.apply(this,arguments)||this}return n(s,e),s.prototype.onLoad=function(){var e=this.constructor;if(console.log("BaseManager onLoad called for "+e.name+"<"+this.name+">"),s._instances.has(e))return console.warn(this.name+" already exists"),void this.node.destroy();console.log(this.name+" created"),o.addPersistRootNode(this.node),s._instances.set(e,this)},t(s,null,[{key:"instance",get:function(){this._instances||(this._instances=new Map);var e=this._instances.get(this);if(e)return e;var n=o.getScene();if(!n)return console.error("["+this.name+"] Cannot create instance: no active scene"),null;var t=n.getChildByName(this.name);return t?(e=t.getComponent(this))||(e=t.addComponent(this)):(t=new i(this.name),n.addChild(t),e=t.addComponent(this)),this._instances.set(this,e),e}}]),s}(r))._instances=new Map,c=h))||c);s._RF.pop()}}}));
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, AudioSource, resources, AudioClip, BaseManager;
 
-System.register("chunks:///_virtual/BaseNotify.ts",["./rollupPluginModLoBabelHelpers.js","cc","./BaseUI.ts"],(function(t){"use strict";var i,o,e,s,n;return{setters:[function(t){i=t.inheritsLoose},function(t){o=t.cclegacy,e=t._decorator},function(t){s=t.UIType,n=t.BaseUI}],execute:function(){var c;o._RF.push({},"dbfd6MWYPFHhZJxchacHq+G","BaseNotify",void 0);var r=e.ccclass;t("BaseNotify",r("BaseNotify")(c=function(t){function o(){return t.apply(this,arguments)||this}i(o,t);var e=o.prototype;return e.init=function(){t.prototype.init.call(this),this.uiType=s.Notify},e.show=function(i){t.prototype.show.call(this,i)},e.hide=function(){t.prototype.hide.call(this)},o}(n))||c);o._RF.pop()}}}));
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      AudioSource = module.AudioSource;
+      resources = module.resources;
+      AudioClip = module.AudioClip;
+    }, function (module) {
+      BaseManager = module.BaseManager;
+    }],
+    execute: function () {
+      var _dec, _dec2, _class, _class2, _descriptor;
 
-System.register("chunks:///_virtual/BaseOverlap.ts",["./rollupPluginModLoBabelHelpers.js","cc","./BaseUI.ts"],(function(t){"use strict";var e,i,s,o,r;return{setters:[function(t){e=t.inheritsLoose},function(t){i=t.cclegacy,s=t._decorator},function(t){o=t.UIType,r=t.BaseUI}],execute:function(){var n;i._RF.push({},"c18f3YBH3xPKYO0V3RTbudP","BaseOverlap",void 0);var c=s.ccclass;t("BaseOverlap",c("BaseOverlap")(n=function(t){function i(){return t.apply(this,arguments)||this}e(i,t);var s=i.prototype;return s.init=function(){t.prototype.init.call(this),this.uiType=o.Overlap},s.show=function(e){t.prototype.show.call(this,e)},s.hide=function(){t.prototype.hide.call(this)},i}(r))||n);i._RF.pop()}}}));
+      cclegacy._RF.push({}, "15149Zx5LdC47Gsa+4kWRfN", "AudioManager", undefined);
 
-System.register("chunks:///_virtual/BasePopup.ts",["./rollupPluginModLoBabelHelpers.js","cc","./BaseUI.ts"],(function(t){"use strict";var e,o,s,n,i,c,p;return{setters:[function(t){e=t.inheritsLoose},function(t){o=t.cclegacy,s=t._decorator,n=t.Vec3,i=t.tween},function(t){c=t.UIType,p=t.BaseUI}],execute:function(){var u;o._RF.push({},"aa8a2hP7CdGfpmZq20yrPXb","BasePopup",void 0);var a=s.ccclass;t("BasePopup",a("BasePopup")(u=function(t){function o(){return t.apply(this,arguments)||this}e(o,t);var s=o.prototype;return s.init=function(){t.prototype.init.call(this),this.uiType=c.Popup},s.show=function(e){t.prototype.show.call(this,e),this.node.scale=new n(0,0,0),i(this.node).to(.5,{scale:new n(1,1,1)},{easing:"quadOut"}).start()},s.hide=function(){t.prototype.hide.call(this)},o}(p))||u);o._RF.pop()}}}));
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var AudioManager = exports('AudioManager', (_dec = ccclass('AudioManager'), _dec2 = property(AudioSource), _dec(_class = (_class2 = /*#__PURE__*/function (_BaseManager) {
+        _inheritsLoose(AudioManager, _BaseManager);
 
-System.register("chunks:///_virtual/BaseScreen.ts",["./rollupPluginModLoBabelHelpers.js","cc","./BaseUI.ts"],(function(e){"use strict";var t,n,i,c,o;return{setters:[function(e){t=e.inheritsLoose},function(e){n=e.cclegacy,i=e._decorator},function(e){c=e.UIType,o=e.BaseUI}],execute:function(){var s;n._RF.push({},"55719i6quRDVowLNH6aCTH4","BaseScreen",void 0);var r=i.ccclass;e("BaseScreen",r("BaseScreen")(s=function(e){function n(){return e.apply(this,arguments)||this}t(n,e);var i=n.prototype;return i.init=function(){e.prototype.init.call(this),this.uiType=c.Screen},i.show=function(t){e.prototype.show.call(this,t)},i.hide=function(){e.prototype.hide.call(this)},n}(o))||s);n._RF.pop()}}}));
+        function AudioManager() {
+          var _this;
 
-System.register("chunks:///_virtual/BaseUI.ts",["./rollupPluginModLoBabelHelpers.js","cc"],(function(t){"use strict";var i,e,n,s,o,c,u;return{setters:[function(t){i=t.inheritsLoose,e=t.createClass},function(t){n=t.cclegacy,s=t._decorator,o=t.UIOpacity,c=t.BlockInputEvents,u=t.Component}],execute:function(){var p;t("UIType",void 0),n._RF.push({},"b35b37DeWlIXYLAQgAV8zaP","BaseUI",void 0);var a,r=s.ccclass;!function(t){t.Screen="Screen",t.Popup="Popup",t.Notify="Notify",t.Overlap="Overlap"}(a||(a=t("UIType",{})));t("BaseUI",r("BaseUI")(p=function(t){function n(){for(var i,e=arguments.length,n=new Array(e),s=0;s<e;s++)n[s]=arguments[s];return(i=t.call.apply(t,[this].concat(n))||this).uiType=a.Screen,i.isShow=!1,i.isInited=!1,i}i(n,t);var s=n.prototype;return s.init=function(){this.isInited||(this.isInited=!0,this.getComponent(o)?this.uiOpacity=this.getComponent(o):this.uiOpacity=this.addComponent(o),this.getComponent(c)?this.blockInput=this.getComponent(c):this.blockInput=this.addComponent(c),this.node.active=!0)},s.show=function(t){this.node.active=!0,this.isShow=!0,this.setCanvasGroupActive(!0)},s.hide=function(){this.isShow=!1,this.setCanvasGroupActive(!1)},s.setCanvasGroupActive=function(t){this.uiOpacity&&(this.uiOpacity.opacity=t?255:0),this.blockInput&&(this.blockInput.enabled=t)},e(n,[{key:"IsShow",get:function(){return this.isShow}},{key:"IsInited",get:function(){return this.isInited}},{key:"UIType",get:function(){return this.uiType}}]),n}(u))||p);n._RF.pop()}}}));
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
 
-System.register("chunks:///_virtual/BetBase.ts",["./rollupPluginModLoBabelHelpers.js","cc","./ObserverManager.ts","./GameManager.ts","./UIManager.ts","./ScreenGame.ts"],(function(e){"use strict";var n,t,o,i,a,r,s,c,u,l,p,B,f;return{setters:[function(e){n=e.applyDecoratedDescriptor,t=e.inheritsLoose,o=e.initializerDefineProperty,i=e.assertThisInitialized},function(e){a=e.cclegacy,r=e._decorator,s=e.Button,c=e.Component},function(e){u=e.ObserverManager,l=e.ObserverEvent},function(e){p=e.GameManager},function(e){B=e.UIManager},function(e){f=e.ScreenGame}],execute:function(){var h,d,b,y,g;e("BetType",void 0),a._RF.push({},"4ccc5myKwhCsoQUqsGppTpW","BetBase",void 0);var m,v=r.ccclass,k=r.property;!function(e){e[e.None=0]="None",e[e.Big=1]="Big",e[e.Small=2]="Small"}(m||(m=e("BetType",{})));e("BetBase",(h=v("BetBase"),d=k(s),h((g=n((y=function(e){function n(){for(var n,t=arguments.length,a=new Array(t),r=0;r<t;r++)a[r]=arguments[r];return(n=e.call.apply(e,[this].concat(a))||this).betType=void 0,n._lockHand=!1,o(n,"betButton",g,i(n)),n}t(n,e);var a=n.prototype;return a.onLoad=function(){u.instance.on(l.LockHand,this.onLockHand.bind(this)),u.instance.on(l.NumberBet,this.onBetNumber.bind(this)),this.betButton.node.on(s.EventType.CLICK,this.onBet,this)},a.onDestroy=function(){u.instance.off(l.LockHand,this.onLockHand.bind(this)),u.instance.off(l.NumberBet,this.onBetNumber.bind(this))},a.onBet=function(){var e;this._lockHand||(p.instance.betType=this.betType,null==(e=B.instance.getExistUI(f))||e.showBottom())},a.onLockHand=function(e){console.log("BetBase onLockHand",e),this._lockHand=e},n}(c)).prototype,"betButton",[d],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),b=y))||b));a._RF.pop()}}}));
+          _this = _BaseManager.call.apply(_BaseManager, [this].concat(args)) || this;
+          _this._soundMap = new Map();
+          _this._sfxSources = [];
 
-System.register("chunks:///_virtual/BigBet.ts",["./rollupPluginModLoBabelHelpers.js","cc","./BetBase.ts","./GameManager.ts"],(function(e){"use strict";var t,n,i,r,s,c;return{setters:[function(e){t=e.inheritsLoose},function(e){n=e.cclegacy,i=e._decorator},function(e){r=e.BetType,s=e.BetBase},function(e){c=e.GameManager}],execute:function(){var a;n._RF.push({},"e628flcL8dM4JJjquu6Bkno","BigBet",void 0);var u=i.ccclass;e("BigBet",u("BigBet")(a=function(e){function n(){return e.apply(this,arguments)||this}t(n,e);var i=n.prototype;return i.start=function(){this.betType=r.Big},i.onBetNumber=function(e){this.betType===c.instance.betType&&(c.instance.numberPlayerBigBet++,c.instance.bigBetTotal+=e,c.instance.numberBigBetOfPlayer+=e)},n}(s))||a);n._RF.pop()}}}));
+          _initializerDefineProperty(_this, "audioSFXSource", _descriptor, _assertThisInitialized(_this));
 
-System.register("chunks:///_virtual/BoardController.ts",["./rollupPluginModLoBabelHelpers.js","cc","./UIManager.ts","./ScreenGame.ts"],(function(r){"use strict";var n,t,e,o,c,s;return{setters:[function(r){n=r.inheritsLoose},function(r){t=r.cclegacy,e=r._decorator,o=r.Component},function(r){c=r.UIManager},function(r){s=r.ScreenGame}],execute:function(){var a;t._RF.push({},"12964gtw91OmIL3lBENcOHr","BoardController",void 0);var l=e.ccclass;r("BoardController",l("BoardController")(a=function(r){function t(){return r.apply(this,arguments)||this}return n(t,r),t.prototype.start=function(){c.instance.showScreen(s,null,!0)},t}(o))||a);t._RF.pop()}}}));
+          return _this;
+        }
 
-System.register("chunks:///_virtual/BubbleLabel.ts",["./rollupPluginModLoBabelHelpers.js","cc"],(function(e){"use strict";var t,n,i,o,a,l,r,s,c,u,p;return{setters:[function(e){t=e.applyDecoratedDescriptor,n=e.inheritsLoose,i=e.initializerDefineProperty,o=e.assertThisInitialized},function(e){a=e.cclegacy,l=e._decorator,r=e.Label,s=e.Tween,c=e.tween,u=e.Vec3,p=e.Component}],execute:function(){var b,d,h,f,g;a._RF.push({},"52cf4H7F81DprBn33tyGYn0","BubbleLabel",void 0);var y=l.ccclass,v=l.property;e("BubbleLabel",(b=y("BubbleLabel"),d=v({type:r}),b((g=t((f=function(e){function t(){for(var t,n=arguments.length,a=new Array(n),l=0;l<n;l++)a[l]=arguments[l];return t=e.call.apply(e,[this].concat(a))||this,i(t,"label",g,o(t)),t.DURATION=1,t}return n(t,e),t.prototype.show=function(e,t,n,i,o){var a=this;void 0===o&&(o=this.DURATION),s.stopAllByTarget(this.node),this.node.active=!0,this.label.string=e,this.label.color=i,this.node.setWorldPosition(t),this.node.setScale(1,1,1);var l=n.clone();l.normalize();var r=this.node.getPosition().clone().add(l.multiplyScalar(50));c(this.node).parallel(c().target(this.node).to(o,{scale:new u(1.5,1.5,1.5)},{easing:"quadOut"}),c().target(this.node).to(o,{position:r},{easing:"quartInOut"})).call((function(){c(a.node).to(o,{scale:new u(.01,.01,.01)},{easing:"quadOut"}).call((function(){a.node.active=!1})).start()})).start()},t}(p)).prototype,"label",[d],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),h=f))||h));a._RF.pop()}}}));
+        var _proto = AudioManager.prototype;
 
-System.register("chunks:///_virtual/CoverResultController.ts",["./rollupPluginModLoBabelHelpers.js","cc","./ObserverManager.ts"],(function(e){"use strict";var t,o,i,n,r,s,c,l,a,u,v,h,d,p;return{setters:[function(e){t=e.applyDecoratedDescriptor,o=e.inheritsLoose,i=e.initializerDefineProperty,n=e.assertThisInitialized},function(e){r=e.cclegacy,s=e._decorator,c=e.Node,l=e.Label,a=e.Vec3,u=e.UITransform,v=e.Vec2,h=e.Component},function(e){d=e.ObserverManager,p=e.ObserverEvent}],execute:function(){var _,f,R,C,g,N,m;r._RF.push({},"42ed00GfDFO/IZ9MsnvunSI","CoverResultController",void 0);var b=s.ccclass,P=s.property;e("CoverController",(_=b("CoverController"),f=P(c),R=P(l),_((N=t((g=function(e){function t(){for(var t,o=arguments.length,r=new Array(o),s=0;s<o;s++)r[s]=arguments[s];return t=e.call.apply(e,[this].concat(r))||this,i(t,"coverResultNode",N,n(t)),i(t,"timerLabel",m,n(t)),t._offset=new a,t._localPos=new a,t._originPosition=new a,t._timer=0,t.TIME_CHECK=6,t}o(t,e);var r=t.prototype;return r.onLoad=function(){var e=this;this.coverResultNode&&(this._parentUI=this.coverResultNode.parent.getComponent(u),this.coverResultNode.on(c.EventType.TOUCH_START,(function(t){var o=t.getLocation();e._localPos=e._parentUI.convertToNodeSpaceAR(new a(o.x,o.y,0)),e._offset=e.coverResultNode.position.clone().subtract(e._localPos)})),this.coverResultNode.on(c.EventType.TOUCH_MOVE,(function(t){var o=t.getLocation();e._localPos=e._parentUI.convertToNodeSpaceAR(new a(o.x,o.y,0)),e.coverResultNode.setPosition(e._localPos.add(e._offset))})),this.coverResultNode.on(c.EventType.TOUCH_END,(function(){return e.checkPosition()})),this.coverResultNode.on(c.EventType.TOUCH_CANCEL,(function(){return e.checkPosition()})))},r.start=function(){this._originPosition=this.coverResultNode.position.clone()},r.update=function(e){this.coverResultNode.active&&(this.timerLabel.node.active=!0,this._timer+=e,this._timer>=this.TIME_CHECK&&(this.timerLabel.node.active=!1,this._timer=0,this.checkPosition(!0)),this.timerLabel.string=Math.floor(this.TIME_CHECK-this._timer).toString())},r.checkPosition=function(e){void 0===e&&(e=!1),(e||this.checkOutRadius(v.clone(this.coverResultNode.position)))&&(this.coverResultNode.active=!1,this.timerLabel.node.active=!1,this._timer=0,d.instance.emit(p.CoverResult,!1),this.coverResultNode.setPosition(this._originPosition))},r.checkOutRadius=function(e){var t=.5*this.coverResultNode.getComponent(u).width;console.log("radius: ",t);var o=new v(this._originPosition.x,this._originPosition.y);return console.log("distance: ",v.distance(e,o)),v.distance(e,o)>t},t}(h)).prototype,"coverResultNode",[f],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),m=t(g.prototype,"timerLabel",[R],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),C=g))||C));r._RF.pop()}}}));
+        _proto.onLoad = function onLoad() {
+          _BaseManager.prototype.onLoad.call(this);
 
-System.register("chunks:///_virtual/DiceRotateEffect.ts",["./rollupPluginModLoBabelHelpers.js","cc"],(function(e){"use strict";var t,n,i,o,r,c,s,a;return{setters:[function(e){t=e.applyDecoratedDescriptor,n=e.inheritsLoose,i=e.initializerDefineProperty,o=e.assertThisInitialized},function(e){r=e.cclegacy,c=e._decorator,s=e.sp,a=e.Component}],execute:function(){var l,u,f,p,y;r._RF.push({},"f849e3xxCdEE4x9oy6yGCjx","DiceRotateEffect",void 0);var h=c.ccclass,d=c.property;e("DiceRotateEffect",(l=h("DiceRotateEffect"),u=d(s.Skeleton),l((y=t((p=function(e){function t(){for(var t,n=arguments.length,r=new Array(n),c=0;c<n;c++)r[c]=arguments[c];return t=e.call.apply(e,[this].concat(r))||this,i(t,"skeleton",y,o(t)),t}return n(t,e),t.prototype.onEnable=function(){var e=this;this.skeleton.setAnimation(0,"Idle",!1),this.skeleton.setCompleteListener((function(){e.node.active=!1}))},t}(a)).prototype,"skeleton",[u],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),f=p))||f));r._RF.pop()}}}));
+          this.loadAllSounds();
+        };
 
-System.register("chunks:///_virtual/DotResult.ts",["./rollupPluginModLoBabelHelpers.js","cc","./ObserverManager.ts","./GameManager.ts"],(function(t){"use strict";var e,r,n,i,o,a,s,u,c,l,p,d;return{setters:[function(t){e=t.applyDecoratedDescriptor,r=t.inheritsLoose,n=t.initializerDefineProperty,i=t.assertThisInitialized},function(t){o=t.cclegacy,a=t._decorator,s=t.Sprite,u=t.SpriteFrame,c=t.Component},function(t){l=t.ObserverManager,p=t.ObserverEvent},function(t){d=t.GameManager}],execute:function(){var f,h,v,b,g,m,y;o._RF.push({},"dae91uCHpdMCp21M1+Ey5FN","DotResult",void 0);var D=a.ccclass,R=a.property;t("DotResult",(f=D("DotResult"),h=R([s]),v=R([u]),f((m=e((g=function(t){function e(){for(var e,r=arguments.length,o=new Array(r),a=0;a<r;a++)o[a]=arguments[a];return e=t.call.apply(t,[this].concat(o))||this,n(e,"dots",m,i(e)),n(e,"dotFrames",y,i(e)),e}r(e,t);var o=e.prototype;return o.start=function(){l.instance.on(p.UpdateDotResult,this.updateDotResult.bind(this)),this.updateDotResult(d.instance.dotResult)},o.updateDotResult=function(t){for(var e=0;e<t.length;e++)this.dots[e].spriteFrame=this.dotFrames[t[e]?1:0]},e}(c)).prototype,"dots",[h],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return[]}}),y=e(g.prototype,"dotFrames",[v],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return[]}}),b=g))||b));o._RF.pop()}}}));
+        _proto.loadAllSounds = function loadAllSounds() {
+          var _this2 = this;
 
-System.register("chunks:///_virtual/GameManager.ts",["./rollupPluginModLoBabelHelpers.js","cc","./BaseManager.ts","./ObserverManager.ts","./UIManager.ts","./ScreenGame.ts","./BetBase.ts"],(function(e){"use strict";var t,n,r,a,i,o,l,s,u,c,m,h,y;return{setters:[function(e){t=e.inheritsLoose,n=e.createClass,r=e.asyncToGenerator,a=e.regeneratorRuntime},function(e){i=e.cclegacy,o=e._decorator,l=e.director},function(e){s=e.BaseManager},function(e){u=e.ObserverManager,c=e.ObserverEvent},function(e){m=e.UIManager},function(e){h=e.ScreenGame},function(e){y=e.BetType}],execute:function(){var f;e("SceneName",void 0),i._RF.push({},"d400byDuhVCyac1seK+8g4k","GameManager",void 0);var B,g=o.ccclass;!function(e){e.Gameplay="gameplay"}(B||(B=e("SceneName",{})));e("GameManager",g("GameManager")(f=function(e){function i(){for(var t,n=arguments.length,r=new Array(n),a=0;a<n;a++)r[a]=arguments[a];return(t=e.call.apply(e,[this].concat(r))||this)._playerMoney=5e4,t._bigBetTotal=0,t._numberPlayerBigBet=0,t._numberBigBetOfPlayer=0,t._smallBetTotal=0,t._numberPlayerSmallBet=0,t._numberSmallBetOfPlayer=0,t.canCountdown=!1,t.betType=y.None,t.dotResult=Array.from({length:10},(function(){return Math.random()<.5})),t.isShowHand=!1,t._timer=0,t._timerCount=0,t.TIME_COUNT=31,t.TIME_TICK=1,t._currentRandomTimer=1,t.RandomTimer=[.4,.5,.6,.3,.2,.7,.8],t}t(i,e);var o=i.prototype;return o.start=function(){var e=this;this._timerCount=this.TIME_COUNT,this.playerMoney=this.loadPlayerMoney(),this.delay(1e3).then((function(){e.loadSceneAsync(B.Gameplay)}))},o.update=function(e){this.canCountdown&&(this._timer+=e,this._timerCount<=0&&(this._timerCount=this.TIME_COUNT,this._timer=0,u.instance.emit(c.RollDice),this.canCountdown=!1),this._timer>=this._currentRandomTimer&&this.fakeNumberBet(),this._timer>=this.TIME_TICK&&(this._timer-=this.TIME_TICK,this._timerCount--,u.instance.emit(c.UpdateTimer,this._timerCount)))},o.fakeNumberBet=function(){this._currentRandomTimer=this.RandomTimer[Math.floor(Math.random()*this.RandomTimer.length)],this.numberPlayerBigBet+=Math.floor(4*Math.random()),this.bigBetTotal+=Math.floor(1e4*Math.random())+3e3,this.numberPlayerSmallBet+=Math.floor(4*Math.random()),this.smallBetTotal+=Math.floor(1e4*Math.random())+3e3},o.resetCountdown=function(){var e=r(a().mark((function e(){var t;return a().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.delay(2e3);case 2:return this.canCountdown=!0,this._currentRandomTimer=1,e.next=6,this.delay(1e3);case 6:null==(t=m.instance.getExistUI(h))||t.lightRotateEffect.hideLight();case 7:case"end":return e.stop()}}),e,this)})));return function(){return e.apply(this,arguments)}}(),o.delay=function(e){return new Promise((function(t){return setTimeout(t,e)}))},o.loadSceneAsync=function(){var e=r(a().mark((function e(t){return a().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.abrupt("return",new Promise((function(e,n){l.loadScene(t,(function(r){r?(console.error('Failed to load scene "'+t+'"',r),n(r)):(console.log('Scene "'+t+'" loaded successfully'),i.instance.canCountdown=!0,e())}))})));case 1:case"end":return e.stop()}}),e)})));return function(t){return e.apply(this,arguments)}}(),o.formatNumber=function(e){return e.toLocaleString("en-US")},o.savePlayerMoney=function(){localStorage.setItem("playerMoney",this._playerMoney.toString())},o.loadPlayerMoney=function(){var e=localStorage.getItem("playerMoney");return e?parseInt(e):1e5},n(i,[{key:"playerMoney",get:function(){return this._playerMoney},set:function(e){this._playerMoney=e>=0?e:0,this.savePlayerMoney(),u.instance.emit(c.UpdatePlayerMoneyLabel,this._playerMoney)}},{key:"bigBetTotal",get:function(){return this._bigBetTotal},set:function(e){this._bigBetTotal=e,u.instance.emit(c.UpdateBigBetTotalLabel,this._bigBetTotal)}},{key:"numberPlayerBigBet",get:function(){return this._numberPlayerBigBet},set:function(e){this._numberPlayerBigBet=e,u.instance.emit(c.UpdateNumberPlayerBigBetLabel,this._numberPlayerBigBet)}},{key:"numberBigBetOfPlayer",get:function(){return this._numberBigBetOfPlayer},set:function(e){this._numberBigBetOfPlayer=e,u.instance.emit(c.UpdateNumberBigBetOfPlayerLabel,this._numberBigBetOfPlayer)}},{key:"smallBetTotal",get:function(){return this._smallBetTotal},set:function(e){this._smallBetTotal=e,u.instance.emit(c.UpdateSmallBetTotalLabel,this._smallBetTotal)}},{key:"numberPlayerSmallBet",get:function(){return this._numberPlayerSmallBet},set:function(e){this._numberPlayerSmallBet=e,u.instance.emit(c.UpdateNumberPlayerSmallBetLabel,this._numberPlayerSmallBet)}},{key:"numberSmallBetOfPlayer",get:function(){return this._numberSmallBetOfPlayer},set:function(e){this._numberSmallBetOfPlayer=e,u.instance.emit(c.UpdateNumberSmallBetOfPlayerLabel,this._numberSmallBetOfPlayer)}}]),i}(s))||f);i._RF.pop()}}}));
+          resources.loadDir('Audios', AudioClip, function (err, clips) {
+            if (err) {
+              console.error('❌ Error loading audios:', err);
+              return;
+            }
 
-System.register("chunks:///_virtual/HandButtonController.ts",["./rollupPluginModLoBabelHelpers.js","cc","./GameManager.ts"],(function(t){"use strict";var n,e,r,o,i,a,s,l,u,c,p;return{setters:[function(t){n=t.applyDecoratedDescriptor,e=t.inheritsLoose,r=t.initializerDefineProperty,o=t.assertThisInitialized},function(t){i=t.cclegacy,a=t._decorator,s=t.Button,l=t.SpriteFrame,u=t.Sprite,c=t.Component},function(t){p=t.GameManager}],execute:function(){var d,h,f,m,B,y,C;i._RF.push({},"9ded5iLhk5Ntr+XEi8fefoS","HandButtonController",void 0);var S=a.ccclass,g=a.property;t("HandButtonController",(d=S("HandButtonController"),h=g(s),f=g([l]),d((y=n((B=function(t){function n(){for(var n,e=arguments.length,i=new Array(e),a=0;a<e;a++)i[a]=arguments[a];return n=t.call.apply(t,[this].concat(i))||this,r(n,"handButton",y,o(n)),r(n,"handSpriteFrames",C,o(n)),n}e(n,t);var i=n.prototype;return i.start=function(){this.handButton.node.on(s.EventType.CLICK,this.onHandButtonClick,this)},i.onHandButtonClick=function(){p.instance.isShowHand?(p.instance.isShowHand=!1,this.handButton.node.getComponent(u).spriteFrame=this.handSpriteFrames[1]):(p.instance.isShowHand=!0,this.handButton.node.getComponent(u).spriteFrame=this.handSpriteFrames[0])},n}(c)).prototype,"handButton",[h],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),C=n(B.prototype,"handSpriteFrames",[f],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),m=B))||m));i._RF.pop()}}}));
+            clips.forEach(function (clip) {
+              _this2._soundMap.set(clip.name, clip);
+            });
+          });
+        };
 
-System.register("chunks:///_virtual/LightRotateEffect.ts",["./rollupPluginModLoBabelHelpers.js","cc"],(function(t){"use strict";var e,o,n,i,c,s;return{setters:[function(t){e=t.inheritsLoose},function(t){o=t.cclegacy,n=t._decorator,i=t.tween,c=t.Vec3,s=t.Component}],execute:function(){var r;o._RF.push({},"bd30e29MAxDzJPjiNA8c8cv","LightRotateEffect",void 0);var a=n.ccclass;t("LightRotateEffect",a("LightRotateEffect")(r=function(t){function o(){return t.apply(this,arguments)||this}e(o,t);var n=o.prototype;return n.showLight=function(t){try{console.log("showLight",t),this.node.setWorldPosition(t),this.node.active=!0,i(this.node).to(1,{scale:new c(3,3,3),angle:180}).to(1,{scale:new c(2,2,2),angle:360}).union().repeatForever().start(),console.log("Light tween started OK")}catch(t){console.error("showLight error:",t)}},n.hideLight=function(){i(this.node).stop(),this.node.active=!1},o}(s))||r);o._RF.pop()}}}));
+        _proto.playSFXEffect = function playSFXEffect(key, volume) {
+          if (volume === void 0) {
+            volume = 1;
+          }
 
-System.register("chunks:///_virtual/main",["./BoardController.ts","./BetBase.ts","./BigBet.ts","./SmallBet.ts","./AudioManager.ts","./BaseManager.ts","./GameManager.ts","./ObserverManager.ts","./UIManager.ts","./BaseNotify.ts","./BaseOverlap.ts","./BasePopup.ts","./BaseScreen.ts","./BaseUI.ts","./OverlapLoading.ts","./PopupHelp.ts","./ScreenGame.ts","./BubbleLabel.ts","./CoverResultController.ts","./DiceRotateEffect.ts","./DotResult.ts","./HandButtonController.ts","./LightRotateEffect.ts","./WebViewController.ts"],(function(){"use strict";return{setters:[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],execute:function(){}}}));
+          var clip = this._soundMap.get(key);
 
-System.register("chunks:///_virtual/ObserverManager.ts",["./rollupPluginModLoBabelHelpers.js","cc","./BaseManager.ts"],(function(e){"use strict";var t,a,r,l,n;return{setters:[function(e){t=e.inheritsLoose,a=e.createForOfIteratorHelperLoose},function(e){r=e.cclegacy,l=e._decorator},function(e){n=e.BaseManager}],execute:function(){var s;e("ObserverEvent",void 0),r._RF.push({},"ad949BefgJOF6dMkY2fSBfp","ObserverManager",void 0);var o,u=l.ccclass;!function(e){e.UpdatePlayerMoneyLabel="updatePlayerMoneyLabel",e.RollDice="rollDice",e.UpdateTimer="updateTimer",e.NumberBet="numberBet",e.UpdateTotalBetLabel="updateTotalBetLabel",e.UpdateBigBetTotalLabel="updateBigBetTotalLabel",e.UpdateSmallBetTotalLabel="updateSmallBetTotalLabel",e.UpdateDotResult="updateDotResult",e.LockHand="lockHand",e.UpdateNumberBigBetOfPlayerLabel="updateNumberBigBetPlayerLabel",e.UpdateNumberSmallBetOfPlayerLabel="updateNumberSmallBetPlayerLabel",e.CoverResult="coverResult",e.UpdateNumberPlayerBigBetLabel="updateNumberPlayerBigBetLabel",e.UpdateNumberPlayerSmallBetLabel="updateNumberPlayerSmallBetLabel"}(o||(o=e("ObserverEvent",{})));e("ObserverManager",u("ObserverManager")(s=function(e){function r(){for(var t,a=arguments.length,r=new Array(a),l=0;l<a;l++)r[l]=arguments[l];return(t=e.call.apply(e,[this].concat(r))||this)._events=new Map,t}t(r,e);var l=r.prototype;return l.on=function(e,t){this._events.has(e)||this._events.set(e,new Set),this._events.get(e).add(t)},l.off=function(e,t){this._events.has(e)&&(t?this._events.get(e).delete(t):this._events.delete(e))},l.emit=function(e){if(this._events.has(e)){for(var t=arguments.length,r=new Array(t>1?t-1:0),l=1;l<t;l++)r[l-1]=arguments[l];for(var n,s=a(this._events.get(e));!(n=s()).done;){var o=n.value;o.apply(void 0,r)}}},l.clearAll=function(){this._events.clear()},r}(n))||s);r._RF.pop()}}}));
+          if (!clip) {
+            console.warn("\u26A0\uFE0F Can't find audio with key: " + key);
+            return;
+          }
 
-System.register("chunks:///_virtual/OverlapLoading.ts",["./rollupPluginModLoBabelHelpers.js","cc","./BaseOverlap.ts"],(function(t){"use strict";var e,o,i,n;return{setters:[function(t){e=t.inheritsLoose},function(t){o=t.cclegacy,i=t._decorator},function(t){n=t.BaseOverlap}],execute:function(){var r;o._RF.push({},"a77fbkGB9ZFj5X8/yfFffjk","OverlapLoading",void 0);var a=i.ccclass;i.property,t("OverlapLoading",a("OverlapLoading")(r=function(t){function o(){return t.apply(this,arguments)||this}e(o,t);var i=o.prototype;return i.init=function(){t.prototype.init.call(this)},i.show=function(e){t.prototype.show.call(this,e)},i.hide=function(){t.prototype.hide.call(this)},o}(n))||r);o._RF.pop()}}}));
+          var source = this._sfxSources.find(function (s) {
+            return !s.playing;
+          });
 
-System.register("chunks:///_virtual/PopupHelp.ts",["./rollupPluginModLoBabelHelpers.js","cc","./BasePopup.ts"],(function(t){"use strict";var e,o,i,n,r,p,c,s;return{setters:[function(t){e=t.applyDecoratedDescriptor,o=t.inheritsLoose,i=t.initializerDefineProperty,n=t.assertThisInitialized},function(t){r=t.cclegacy,p=t._decorator,c=t.Button},function(t){s=t.BasePopup}],execute:function(){var l,u,a,h,y;r._RF.push({},"b9b1eQKr8hE4K5cYoajeORb","PopupHelp",void 0);var f=p.ccclass,d=p.property;t("PopupHelp",(l=f("PopupHelp"),u=d({type:c,group:"Node"}),l((y=e((h=function(t){function e(){for(var e,o=arguments.length,r=new Array(o),p=0;p<o;p++)r[p]=arguments[p];return e=t.call.apply(t,[this].concat(r))||this,i(e,"closeButton",y,n(e)),e}o(e,t);var r=e.prototype;return r.init=function(){t.prototype.init.call(this),this.closeButton.node.on(c.EventType.CLICK,this.hide,this)},r.show=function(e){t.prototype.show.call(this,e),this.closeButton.interactable=!0},r.hide=function(){t.prototype.hide.call(this),this.closeButton.interactable=!1},e}(s)).prototype,"closeButton",[u],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),a=h))||a));r._RF.pop()}}}));
+          if (!source) {
+            source = this.node.addComponent(AudioSource);
 
-System.register("chunks:///_virtual/ScreenGame.ts",["./rollupPluginModLoBabelHelpers.js","cc","./BaseScreen.ts","./ObserverManager.ts","./GameManager.ts","./BetBase.ts","./UIManager.ts","./PopupHelp.ts","./LightRotateEffect.ts","./BaseUI.ts","./BubbleLabel.ts"],(function(e){"use strict";var t,i,n,a,o,l,r,u,s,b,m,c,p,h,B,f,d,y,g,T,L,N,E,w,S,k,O,v,P;return{setters:[function(e){t=e.applyDecoratedDescriptor,i=e.inheritsLoose,n=e.initializerDefineProperty,a=e.assertThisInitialized,o=e.asyncToGenerator,l=e.regeneratorRuntime},function(e){r=e.cclegacy,u=e._decorator,s=e.Label,b=e.Node,m=e.Button,c=e.Sprite,p=e.Animation,h=e.SpriteFrame,B=e.UITransform,f=e.Tween,d=e.tween,y=e.Vec3,g=e.Color},function(e){T=e.BaseScreen},function(e){L=e.ObserverManager,N=e.ObserverEvent},function(e){E=e.GameManager},function(e){w=e.BetType},function(e){S=e.UIManager},function(e){k=e.PopupHelp},function(e){O=e.LightRotateEffect},function(e){v=e.UIType},function(e){P=e.BubbleLabel}],execute:function(){var C,R,I,D,_,U,z,A,M,K,H,W,q,F,X,G,x,Y,j,V,Z,J,Q,$,ee,te,ie,ne,ae,oe,le,re,ue,se,be,me,ce,pe,he,Be,fe,de,ye,ge,Te,Le,Ne,Ee,we,Se,ke,Oe,ve,Pe,Ce,Re,Ie,De,_e,Ue,ze,Ae,Me,Ke,He,We,qe,Fe,Xe,Ge,xe,Ye,je,Ve,Ze,Je,Qe;r._RF.push({},"d684fbG8ARLZaEvkCsCpxej","ScreenGame",void 0);var $e=u.ccclass,et=u.property;e("ScreenGame",(C=$e("ScreenGame"),R=et({type:s,group:"Player Info"}),I=et({type:s,group:"Player Info"}),D=et({type:s,group:"Player Info"}),_=et({type:s,group:"Big Bet"}),U=et({type:s,group:"Big Bet"}),z=et({type:b,group:"Big Bet"}),A=et({type:m,group:"Big Bet"}),M=et({type:s,group:"Small Bet"}),K=et({type:s,group:"Small Bet"}),H=et({type:b,group:"Small Bet"}),W=et({type:m,group:"Small Bet"}),q=et({type:b,group:"Dice"}),F=et({type:c,group:"Dice"}),X=et({type:c,group:"Dice"}),G=et({type:c,group:"Dice"}),x=et({type:b,group:"Dice"}),Y=et({type:p,group:"Dice"}),j=et({type:[h],group:"Dice"}),V=et({type:s,group:"Effect"}),Z=et({type:b,group:"Effect"}),J=et({type:b,group:"Effect"}),Q=et({type:O,group:"Effect"}),$=et({type:P,group:"Effect"}),ee=et({type:B,group:"Effect"}),te=et({type:B,group:"Effect"}),ie=et({type:m,group:"Bet"}),ne=et({type:m,group:"Bet"}),ae=et({type:m,group:"Bet"}),oe=et({type:m,group:"Bet"}),le=et({type:m,group:"Bet"}),re=et({type:m,group:"Bet"}),ue=et({type:m,group:"Bet"}),se=et({type:m,group:"Bet"}),be=et({type:m,group:"Bet"}),me=et({type:m,group:"Bet"}),ce=et({type:m,group:"Button"}),pe=et({type:m,group:"Button"}),C((fe=t((Be=function(e){function t(){for(var t,i=arguments.length,o=new Array(i),l=0;l<i;l++)o[l]=arguments[l];return t=e.call.apply(e,[this].concat(o))||this,n(t,"playerMoneyLabel",fe,a(t)),n(t,"numberPlayerBigBetLabel",de,a(t)),n(t,"numberPlayerSmallBetLabel",ye,a(t)),n(t,"numberBigBetOfPlayerLabel",ge,a(t)),n(t,"bigBetTotalLabel",Te,a(t)),n(t,"bigTitleNode",Le,a(t)),n(t,"bigBetButton",Ne,a(t)),n(t,"numberSmallBetOfPlayerLabel",Ee,a(t)),n(t,"smallBetTotalLabel",we,a(t)),n(t,"smallTitleNode",Se,a(t)),n(t,"smallBetButton",ke,a(t)),n(t,"diceResultNode",Oe,a(t)),n(t,"dice1Sprite",ve,a(t)),n(t,"dice2Sprite",Pe,a(t)),n(t,"dice3Sprite",Ce,a(t)),n(t,"diceAnimationNode",Re,a(t)),n(t,"diceAnimation",Ie,a(t)),n(t,"diceSprites",De,a(t)),t.dice1Number=0,t.dice2Number=0,t.dice3Number=0,t.totalNumber=0,t.TWEEN_TEXT_DURATION=.25,t.TWEEN_SCALE_FACTOR=2,t._isShowBottom=!1,t._rollDiceHandler=t.rollDice.bind(a(t)),t._updateTimerHandler=t.updateTimer.bind(a(t)),n(t,"timeLabel",_e,a(t)),n(t,"rotateEffectNode",Ue,a(t)),n(t,"coverResultNode",ze,a(t)),n(t,"lightRotateEffect",Ae,a(t)),n(t,"bubbleLabel",Me,a(t)),n(t,"bottomUITransform",Ke,a(t)),n(t,"maskBottomUITransform",He,a(t)),n(t,"number1kButton",We,a(t)),n(t,"number5kButton",qe,a(t)),n(t,"number10kButton",Fe,a(t)),n(t,"number50kButton",Xe,a(t)),n(t,"number100kButton",Ge,a(t)),n(t,"number200kButton",xe,a(t)),n(t,"number500kButton",Ye,a(t)),n(t,"number1mButton",je,a(t)),n(t,"number5mButton",Ve,a(t)),n(t,"number10mButton",Ze,a(t)),n(t,"closeBottomButton",Je,a(t)),n(t,"helpButton",Qe,a(t)),t}i(t,e);var r=t.prototype;return r.init=function(){e.prototype.init.call(this),L.instance.on(N.RollDice,this._rollDiceHandler),L.instance.on(N.UpdateTimer,this._updateTimerHandler),L.instance.on(N.UpdatePlayerMoneyLabel,this.updatePlayerMoneyLabel.bind(this)),L.instance.on(N.UpdateBigBetTotalLabel,this.updateBigBetTotalLabel.bind(this)),L.instance.on(N.UpdateNumberPlayerBigBetLabel,this.updateNumberPlayerBigBetLabel.bind(this)),L.instance.on(N.UpdateNumberBigBetOfPlayerLabel,this.updateNumberBigBetOfPlayerLabel.bind(this)),L.instance.on(N.UpdateSmallBetTotalLabel,this.updateSmallBetTotalLabel.bind(this)),L.instance.on(N.UpdateNumberPlayerSmallBetLabel,this.updateNumberPlayerSmallBetLabel.bind(this)),L.instance.on(N.UpdateNumberSmallBetOfPlayerLabel,this.updateNumberSmallBetOfPlayerLabel.bind(this)),L.instance.on(N.CoverResult,this.coverResult.bind(this)),this.number1kButton.node.on(m.EventType.CLICK,this.number1k,this),this.number5kButton.node.on(m.EventType.CLICK,this.number5k,this),this.number10kButton.node.on(m.EventType.CLICK,this.number10k,this),this.number50kButton.node.on(m.EventType.CLICK,this.number50k,this),this.number100kButton.node.on(m.EventType.CLICK,this.number100k,this),this.number200kButton.node.on(m.EventType.CLICK,this.number200k,this),this.number500kButton.node.on(m.EventType.CLICK,this.number500k,this),this.number1mButton.node.on(m.EventType.CLICK,this.number1m,this),this.number5mButton.node.on(m.EventType.CLICK,this.number5m,this),this.number10mButton.node.on(m.EventType.CLICK,this.number10m,this),this.closeBottomButton.node.on(m.EventType.CLICK,this.closeBottom,this),this.helpButton.node.on(m.EventType.CLICK,this.showHelp,this)},r.show=function(t){e.prototype.show.call(this,t),this.number1kButton.interactable=!0,this.number5kButton.interactable=!0,this.number10kButton.interactable=!0,this.number50kButton.interactable=!0,this.number100kButton.interactable=!0,this.number200kButton.interactable=!0,this.number500kButton.interactable=!0,this.number1mButton.interactable=!0,this.number5mButton.interactable=!0,this.number10mButton.interactable=!0,this.closeBottomButton.interactable=!0,this.helpButton.interactable=!0,this.updatePlayerMoneyLabel(E.instance.playerMoney),this.timeLabel.node.active=!0,this.diceResultNode.active=!1,this.diceAnimationNode.active=!1,this.rotateEffectNode.active=!1},r.hide=function(){e.prototype.hide.call(this),this.number1kButton.interactable=!1,this.number5kButton.interactable=!1,this.number10kButton.interactable=!1,this.number50kButton.interactable=!1,this.number100kButton.interactable=!1,this.number200kButton.interactable=!1,this.number500kButton.interactable=!1,this.number1mButton.interactable=!1,this.number5mButton.interactable=!1,this.number10mButton.interactable=!1,this.closeBottomButton.interactable=!1,this.helpButton.interactable=!1},r.onDestroy=function(){L.instance.off(N.RollDice,this._rollDiceHandler),L.instance.off(N.UpdateTimer,this._updateTimerHandler),L.instance.off(N.UpdatePlayerMoneyLabel,this.updatePlayerMoneyLabel.bind(this)),L.instance.off(N.UpdateBigBetTotalLabel,this.updateBigBetTotalLabel.bind(this)),L.instance.off(N.UpdateNumberPlayerBigBetLabel,this.updateNumberPlayerBigBetLabel.bind(this)),L.instance.off(N.UpdateNumberBigBetOfPlayerLabel,this.updateNumberBigBetOfPlayerLabel.bind(this)),L.instance.off(N.UpdateSmallBetTotalLabel,this.updateSmallBetTotalLabel.bind(this)),L.instance.off(N.UpdateNumberPlayerSmallBetLabel,this.updateNumberPlayerSmallBetLabel.bind(this)),L.instance.off(N.UpdateNumberSmallBetOfPlayerLabel,this.updateNumberSmallBetOfPlayerLabel.bind(this)),L.instance.off(N.CoverResult,this.coverResult.bind(this)),this.number1kButton.node.off(m.EventType.CLICK,this.number1k,this),this.number5kButton.node.off(m.EventType.CLICK,this.number5k,this),this.number10kButton.node.off(m.EventType.CLICK,this.number10k,this),this.number50kButton.node.off(m.EventType.CLICK,this.number50k,this),this.number100kButton.node.off(m.EventType.CLICK,this.number100k,this),this.number200kButton.node.off(m.EventType.CLICK,this.number200k,this),this.number500kButton.node.off(m.EventType.CLICK,this.number500k,this),this.number1mButton.node.off(m.EventType.CLICK,this.number1m,this),this.number5mButton.node.off(m.EventType.CLICK,this.number5m,this),this.number10mButton.node.off(m.EventType.CLICK,this.number10m,this),this.closeBottomButton.node.off(m.EventType.CLICK,this.closeBottom,this),this.helpButton.node.off(m.EventType.CLICK,this.showHelp,this)},r.coverResult=function(e){e||this.showResultEffect(!0)},r.updatePlayerMoneyLabel=function(e){this.playerMoneyLabel.string=E.instance.formatNumber(e)},r.updateBigBetTotalLabel=function(e){f.stopAllByTarget(this.bigBetTotalLabel.node),d(this.bigBetTotalLabel.node).to(this.TWEEN_TEXT_DURATION,{scale:new y(1,1,1).multiplyScalar(this.TWEEN_SCALE_FACTOR)},{easing:"quadOut"}).to(this.TWEEN_TEXT_DURATION,{scale:y.ONE},{easing:"quadOut"}).start(),this.bigBetTotalLabel.string=E.instance.formatNumber(e)},r.updateNumberPlayerBigBetLabel=function(e){this.numberPlayerBigBetLabel.string=E.instance.formatNumber(e)},r.updateNumberBigBetOfPlayerLabel=function(e){f.stopAllByTarget(this.numberBigBetOfPlayerLabel.node),d(this.numberBigBetOfPlayerLabel.node).to(this.TWEEN_TEXT_DURATION,{scale:new y(1,1,1).multiplyScalar(this.TWEEN_SCALE_FACTOR)},{easing:"quadOut"}).to(this.TWEEN_TEXT_DURATION,{scale:y.ONE},{easing:"quadOut"}).start(),this.numberBigBetOfPlayerLabel.string="Your Bet: "+E.instance.formatNumber(e)},r.updateSmallBetTotalLabel=function(e){f.stopAllByTarget(this.smallBetTotalLabel.node),d(this.smallBetTotalLabel.node).to(this.TWEEN_TEXT_DURATION,{scale:new y(1,1,1).multiplyScalar(this.TWEEN_SCALE_FACTOR)},{easing:"quadOut"}).to(this.TWEEN_TEXT_DURATION,{scale:y.ONE},{easing:"quadOut"}).start(),this.smallBetTotalLabel.string=E.instance.formatNumber(e)},r.updateNumberPlayerSmallBetLabel=function(e){this.numberPlayerSmallBetLabel.string=E.instance.formatNumber(e)},r.updateNumberSmallBetOfPlayerLabel=function(e){f.stopAllByTarget(this.numberSmallBetOfPlayerLabel.node),d(this.numberSmallBetOfPlayerLabel.node).to(this.TWEEN_TEXT_DURATION,{scale:new y(1,1,1).multiplyScalar(this.TWEEN_SCALE_FACTOR)},{easing:"quadOut"}).to(this.TWEEN_TEXT_DURATION,{scale:y.ONE},{easing:"quadOut"}).start(),this.numberSmallBetOfPlayerLabel.string="Your Bet: "+E.instance.formatNumber(e)},r.updateTimer=function(e){this.diceResultNode.active=!1,this.diceAnimationNode.active=!1,this.rotateEffectNode.active=!1,this.timeLabel.string=e.toString(),this.timeLabel.node.active=!0},r.rollDice=function(){var e=this;console.log("rollDice"),S.instance.hideAll(v.Popup),this.closeBottom(),this.dice1Number=Math.floor(6*Math.random())+1,this.dice2Number=Math.floor(6*Math.random())+1,this.dice3Number=Math.floor(6*Math.random())+1,this.totalNumber=this.dice1Number+this.dice2Number+this.dice3Number,this.animationRollDice((function(){console.log("animationRollDice callback"),e.showResultEffect(!E.instance.isShowHand)}))},r.animationRollDice=function(){var e=o(l().mark((function e(t){return l().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return console.log("animationRollDice"),L.instance.emit(N.LockHand,!0),this.timeLabel.node.active=!1,this.diceAnimationNode.active=!0,this.rotateEffectNode.active=!0,this.diceAnimation.play(),e.next=8,E.instance.delay(1250);case 8:t();case 9:case"end":return e.stop()}}),e,this)})));return function(t){return e.apply(this,arguments)}}(),r.updateDiceSprites=function(){console.log("updateDiceSprites"),this.timeLabel.node.active=!1,this.diceAnimationNode.active=!1,this.rotateEffectNode.active=!1,this.dice1Sprite.spriteFrame=this.diceSprites[this.dice1Number-1],this.dice2Sprite.spriteFrame=this.diceSprites[this.dice2Number-1],this.dice3Sprite.spriteFrame=this.diceSprites[this.dice3Number-1],this.diceResultNode.active=!0},r.showResultEffect=function(e){if(console.log("showResultEffect",e),e){try{this.totalNumber<11?(E.instance.playerMoney+=2*E.instance.numberSmallBetOfPlayer,E.instance.dotResult.push(!0),this.lightRotateEffect.showLight(this.smallTitleNode.worldPosition),E.instance.numberSmallBetOfPlayer>0&&this.bubbleLabel.show("+"+2*E.instance.numberSmallBetOfPlayer,this.playerMoneyLabel.node.worldPosition,y.UP,g.YELLOW)):(E.instance.playerMoney+=2*E.instance.numberBigBetOfPlayer,E.instance.dotResult.push(!1),this.lightRotateEffect.showLight(this.bigTitleNode.worldPosition),E.instance.numberBigBetOfPlayer>0&&this.bubbleLabel.show("+"+2*E.instance.numberBigBetOfPlayer,this.playerMoneyLabel.node.worldPosition,y.UP,g.CYAN))}catch(e){console.error("showResultEffect error:",e)}E.instance.dotResult.shift(),E.instance.bigBetTotal=0,E.instance.numberPlayerBigBet=0,E.instance.numberBigBetOfPlayer=0,E.instance.smallBetTotal=0,E.instance.numberPlayerSmallBet=0,E.instance.numberSmallBetOfPlayer=0,E.instance.betType=w.None,L.instance.emit(N.UpdateDotResult,E.instance.dotResult),L.instance.emit(N.LockHand,!1),E.instance.resetCountdown()}else this.coverResultNode.active=!0;this.updateDiceSprites()},r.showBottom=function(){console.log("showBottom"),this._isShowBottom||(this._isShowBottom=!0,d(this.bottomUITransform).to(.5,{height:200},{easing:"quadOut"}).start(),d(this.maskBottomUITransform).to(.5,{height:200},{easing:"quadOut"}).start()),E.instance.betType==w.Big?(this.bigBetButton.node.active=!1,this.smallBetButton.node.active=!0):(this.bigBetButton.node.active=!0,this.smallBetButton.node.active=!1),this.closeBottomButton.interactable=!0},r.closeBottom=function(){this.closeBottomButton.interactable=!1,this._isShowBottom&&(this._isShowBottom=!1,d(this.bottomUITransform).to(.5,{height:0},{easing:"quadOut"}).start(),d(this.maskBottomUITransform).to(.5,{height:0},{easing:"quadOut"}).start()),this.bigBetButton.node.active=!0,this.smallBetButton.node.active=!0},r.updateDataOnBet=function(e){if(E.instance.playerMoney>=e)E.instance.playerMoney-=e,L.instance.emit(N.NumberBet,e);else if(E.instance.playerMoney>0){var t=E.instance.playerMoney;E.instance.playerMoney=0,L.instance.emit(N.NumberBet,t)}else this.bubbleLabel.show("Not enough money",this.playerMoneyLabel.node.worldPosition,y.UP,g.RED,.75)},r.number1k=function(){this.updateDataOnBet(1e3)},r.number5k=function(){this.updateDataOnBet(5e3)},r.number10k=function(){this.updateDataOnBet(1e4)},r.number50k=function(){this.updateDataOnBet(5e4)},r.number100k=function(){this.updateDataOnBet(1e5)},r.number200k=function(){this.updateDataOnBet(2e5)},r.number500k=function(){this.updateDataOnBet(5e5)},r.number1m=function(){this.updateDataOnBet(1e6)},r.number5m=function(){this.updateDataOnBet(5e6)},r.number10m=function(){this.updateDataOnBet(1e7)},r.showHelp=function(){S.instance.showPopup(k,null,!0)},t}(T)).prototype,"playerMoneyLabel",[R],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),de=t(Be.prototype,"numberPlayerBigBetLabel",[I],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),ye=t(Be.prototype,"numberPlayerSmallBetLabel",[D],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),ge=t(Be.prototype,"numberBigBetOfPlayerLabel",[_],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Te=t(Be.prototype,"bigBetTotalLabel",[U],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Le=t(Be.prototype,"bigTitleNode",[z],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Ne=t(Be.prototype,"bigBetButton",[A],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Ee=t(Be.prototype,"numberSmallBetOfPlayerLabel",[M],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),we=t(Be.prototype,"smallBetTotalLabel",[K],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Se=t(Be.prototype,"smallTitleNode",[H],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),ke=t(Be.prototype,"smallBetButton",[W],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Oe=t(Be.prototype,"diceResultNode",[q],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),ve=t(Be.prototype,"dice1Sprite",[F],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Pe=t(Be.prototype,"dice2Sprite",[X],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Ce=t(Be.prototype,"dice3Sprite",[G],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Re=t(Be.prototype,"diceAnimationNode",[x],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Ie=t(Be.prototype,"diceAnimation",[Y],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),De=t(Be.prototype,"diceSprites",[j],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return[]}}),_e=t(Be.prototype,"timeLabel",[V],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Ue=t(Be.prototype,"rotateEffectNode",[Z],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),ze=t(Be.prototype,"coverResultNode",[J],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Ae=t(Be.prototype,"lightRotateEffect",[Q],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Me=t(Be.prototype,"bubbleLabel",[$],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Ke=t(Be.prototype,"bottomUITransform",[ee],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),He=t(Be.prototype,"maskBottomUITransform",[te],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),We=t(Be.prototype,"number1kButton",[ie],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),qe=t(Be.prototype,"number5kButton",[ne],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Fe=t(Be.prototype,"number10kButton",[ae],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Xe=t(Be.prototype,"number50kButton",[oe],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Ge=t(Be.prototype,"number100kButton",[le],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),xe=t(Be.prototype,"number200kButton",[re],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Ye=t(Be.prototype,"number500kButton",[ue],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),je=t(Be.prototype,"number1mButton",[se],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Ve=t(Be.prototype,"number5mButton",[be],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Ze=t(Be.prototype,"number10mButton",[me],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Je=t(Be.prototype,"closeBottomButton",[ce],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),Qe=t(Be.prototype,"helpButton",[pe],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),he=Be))||he));r._RF.pop()}}}));
+            this._sfxSources.push(source);
+          }
 
-System.register("chunks:///_virtual/SmallBet.ts",["./rollupPluginModLoBabelHelpers.js","cc","./BetBase.ts","./GameManager.ts"],(function(e){"use strict";var t,n,a,l,r,s;return{setters:[function(e){t=e.inheritsLoose},function(e){n=e.cclegacy,a=e._decorator},function(e){l=e.BetType,r=e.BetBase},function(e){s=e.GameManager}],execute:function(){var c;n._RF.push({},"c25d6l9EddLFqCb6P0/KmMl","SmallBet",void 0);var i=a.ccclass;e("SmallBet",i("SmallBet")(c=function(e){function n(){return e.apply(this,arguments)||this}t(n,e);var a=n.prototype;return a.start=function(){this.betType=l.Small},a.onBetNumber=function(e){this.betType===s.instance.betType&&(s.instance.numberPlayerSmallBet++,s.instance.smallBetTotal+=e,s.instance.numberSmallBetOfPlayer+=e)},n}(r))||c);n._RF.pop()}}}));
+          source.playOneShot(clip, volume);
+        };
 
-System.register("chunks:///_virtual/UIManager.ts",["./rollupPluginModLoBabelHelpers.js","cc","./BaseManager.ts","./BaseNotify.ts","./BaseOverlap.ts","./BasePopup.ts","./BaseScreen.ts","./BaseUI.ts","./GameManager.ts"],(function(e){"use strict";var t,n,r,o,i,a,s,c,u,l,p,f,h,y,w,d,v,b,g,I,B;return{setters:[function(e){t=e.applyDecoratedDescriptor,n=e.inheritsLoose,r=e.initializerDefineProperty,o=e.assertThisInitialized,i=e.createForOfIteratorHelperLoose,a=e.asyncToGenerator,s=e.regeneratorRuntime},function(e){c=e.cclegacy,u=e._decorator,l=e.Button,p=e.Node,f=e.instantiate,h=e.resources,y=e.Prefab},function(e){w=e.BaseManager},function(e){d=e.BaseNotify},function(e){v=e.BaseOverlap},function(e){b=e.BasePopup},function(e){g=e.BaseScreen},function(e){I=e.UIType},function(e){B=e.GameManager}],execute:function(){var U,P,m,M,S,N,O,k,x,C,z,L,T,_,D;c._RF.push({},"b4b26h3Z0xB4K4my1WzLa0e","UIManager",void 0);var A=u.ccclass,H=u.property;e("UIManager",(U=A("UIManager"),P=H(l),m=H(l),M=H(p),S=H(p),N=H(p),O=H(p),U((C=t((x=function(e){function t(){for(var t,n,i,a=arguments.length,s=new Array(a),c=0;c<a;c++)s[c]=arguments[c];return i=e.call.apply(e,[this].concat(s))||this,r(i,"depositButton",C,o(i)),r(i,"withdrawButton",z,o(i)),r(i,"cScreen",L,o(i)),r(i,"cPopup",T,o(i)),r(i,"cOverlap",_,o(i)),r(i,"cNotify",D,o(i)),i.roots={},i.caches=((t={})[I.Screen]=new Map,t[I.Popup]=new Map,t[I.Notify]=new Map,t[I.Overlap]=new Map,t),i.curUI=((n={})[I.Screen]=null,n[I.Popup]=null,n[I.Notify]=null,n[I.Overlap]=null,n),i.UI_PATH="Prefabs/UI/",i}n(t,e);var c=t.prototype;return c.onLoad=function(){e.prototype.onLoad.call(this),this.roots[I.Screen]=this.cScreen,this.roots[I.Popup]=this.cPopup,this.roots[I.Notify]=this.cNotify,this.roots[I.Overlap]=this.cOverlap,this.depositButton.node.on(l.EventType.CLICK,this.onDepositButtonClick,this),this.withdrawButton.node.on(l.EventType.CLICK,this.onWithdrawButtonClick,this)},c.show=function(){var e=a(s().mark((function e(t,n,r,o){var i,a,c,u;return s().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(void 0===o&&(o=!1),i=t.name,a=this.caches[n],c=this.curUI[n],n===I.Screen&&c&&c.constructor.name!==i&&c.hide(),u=a.get(i)){e.next=12;break}return console.log("ui null, create new UI",i),e.next=10,this.createUI(n,i);case 10:u=e.sent,a.set(i,u);case 12:return!u||!o&&u.IsShow||(console.log("has cache, show UI",i),this.curUI[n]=u,u.node.setSiblingIndex(u.node.parent.children.length-1),u.show(r)),e.abrupt("return",u);case 14:case"end":return e.stop()}}),e,this)})));return function(t,n,r,o){return e.apply(this,arguments)}}(),c.hideAll=function(e){for(var t,n=i(this.caches[e]);!(t=n()).done;){var r=t.value[1];r.IsShow&&r.hide()}},c.createUI=function(){var e=a(s().mark((function e(t,n){var r,o,i,a,c;return s().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return r=""+this.UI_PATH+t+"/"+n,e.next=3,this.loadPrefab(r);case 3:return o=e.sent,i=f(o),(a=this.roots[t])?a.addChild(i):console.error("[UIManager] Root node for "+I[t]+" is not set!"),null==(c=i.getComponent(n)).init||c.init(),e.abrupt("return",c);case 10:case"end":return e.stop()}}),e,this)})));return function(t,n){return e.apply(this,arguments)}}(),c.loadPrefab=function(){var e=a(s().mark((function e(t){return s().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.abrupt("return",new Promise((function(e,n){h.load(t,y,(function(t,r){t||!r?n(t):e(r)}))})));case 1:case"end":return e.stop()}}),e)})));return function(t){return e.apply(this,arguments)}}(),c.showScreen=function(e,t,n){return void 0===n&&(n=!1),this.show(e,I.Screen,t,n)},c.showPopup=function(e,t,n){return void 0===n&&(n=!1),this.show(e,I.Popup,t,n)},c.showNotify=function(e,t,n){return void 0===n&&(n=!1),this.show(e,I.Notify,t,n)},c.showOverlap=function(e,t,n){return void 0===n&&(n=!1),this.show(e,I.Overlap,t,n)},c.getExistUI=function(e){var t,n=e.name;if(e.prototype instanceof g)t=I.Screen;else if(e.prototype instanceof b)t=I.Popup;else if(e.prototype instanceof d)t=I.Notify;else{if(!(e.prototype instanceof v))return console.warn("[UIManager] Unknown UI type for "+n),null;t=I.Overlap}return this.caches[t].get(n)||null},c.onDepositButtonClick=function(){B.instance.playerMoney+=1e4},c.onWithdrawButtonClick=function(){B.instance.playerMoney-=1e4},t}(w)).prototype,"depositButton",[P],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),z=t(x.prototype,"withdrawButton",[m],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),L=t(x.prototype,"cScreen",[M],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),T=t(x.prototype,"cPopup",[S],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),_=t(x.prototype,"cOverlap",[N],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),D=t(x.prototype,"cNotify",[O],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),k=x))||k));c._RF.pop()}}}));
+        return AudioManager;
+      }(BaseManager), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "audioSFXSource", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _class2)) || _class));
 
-System.register("chunks:///_virtual/WebViewController.ts",["./rollupPluginModLoBabelHelpers.js","cc"],(function(e){"use strict";var t,i,o,n,r,l,s,u,c,a;return{setters:[function(e){t=e.applyDecoratedDescriptor,i=e.inheritsLoose,o=e.initializerDefineProperty,n=e.assertThisInitialized},function(e){r=e.cclegacy,l=e._decorator,s=e.WebView,u=e.Button,c=e.UITransform,a=e.Component}],execute:function(){var h,w,b,p,f,d,v,g,y,W,L,V,m,z,B;r._RF.push({},"15185SUBRhETK4PwuZE7z+z","WebViewController",void 0);var R=l.ccclass,E=l.property;e("WebViewController",(h=R("WebViewController"),w=E(s),b=E(u),p=E(u),f=E({tooltip:"URL cần mở"}),d=E({tooltip:"Width của WebView"}),v=E({tooltip:"Height của WebView"}),h((W=t((y=function(e){function t(){for(var t,i=arguments.length,r=new Array(i),l=0;l<i;l++)r[l]=arguments[l];return t=e.call.apply(e,[this].concat(r))||this,o(t,"webview",W,n(t)),o(t,"openButton",L,n(t)),o(t,"closeButton",V,n(t)),o(t,"url",m,n(t)),o(t,"width",z,n(t)),o(t,"height",B,n(t)),t}i(t,e);var r=t.prototype;return r.start=function(){this.webview.node.active=!1,this.webview.node.getComponent(c).setContentSize(this.width,this.height),this.webview.node.setPosition(0,0,0),this.openButton&&this.openButton.node.on("click",this.openWebView,this),this.closeButton&&this.closeButton.node.on("click",this.closeWebView,this),this.webview.node.on(s.EventType.LOADING,this.onLoadStart,this),this.webview.node.on(s.EventType.LOADED,this.onLoadFinish,this),this.webview.node.on(s.EventType.ERROR,this.onLoadError,this)},r.openWebView=function(){this.webview.url=this.url,this.webview.node.active=!0},r.closeWebView=function(){this.webview.node.active=!1,this.webview.url=""},r.onLoadStart=function(){console.log("WebView bắt đầu tải URL:",this.url)},r.onLoadFinish=function(){console.log("WebView tải xong URL:",this.url)},r.onLoadError=function(){console.warn("WebView tải lỗi URL:",this.url)},t}(a)).prototype,"webview",[w],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),L=t(y.prototype,"openButton",[b],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),V=t(y.prototype,"closeButton",[p],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),m=t(y.prototype,"url",[f],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return"https://example.com"}}),z=t(y.prototype,"width",[d],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 600}}),B=t(y.prototype,"height",[v],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 400}}),g=y))||g));r._RF.pop()}}}));
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/BaseManager.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  'use strict';
+
+  var _inheritsLoose, _createClass, cclegacy, _decorator, director, Node, Component;
+
+  return {
+    setters: [function (module) {
+      _inheritsLoose = module.inheritsLoose;
+      _createClass = module.createClass;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      director = module.director;
+      Node = module.Node;
+      Component = module.Component;
+    }],
+    execute: function () {
+      var _dec, _class, _class2;
+
+      cclegacy._RF.push({}, "3a357hdv7VEHIxDeBLnWsKQ", "BaseManager", undefined);
+
+      var ccclass = _decorator.ccclass;
+      var BaseManager = exports('BaseManager', (_dec = ccclass('BaseManager'), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(BaseManager, _Component);
+
+        function BaseManager() {
+          return _Component.apply(this, arguments) || this;
+        }
+
+        var _proto = BaseManager.prototype;
+
+        _proto.onLoad = function onLoad() {
+          var clazz = this.constructor;
+          console.log("BaseManager onLoad called for " + clazz.name + "<" + this.name + ">");
+
+          if (BaseManager._instances.has(clazz)) {
+            console.warn(this.name + " already exists");
+            this.node.destroy();
+            return;
+          }
+
+          console.log(this.name + " created");
+          director.addPersistRootNode(this.node);
+
+          BaseManager._instances.set(clazz, this);
+        };
+
+        _createClass(BaseManager, null, [{
+          key: "instance",
+          get: function get() {
+            if (!this._instances) this._instances = new Map();
+
+            var inst = this._instances.get(this);
+
+            if (inst) return inst;
+            var scene = director.getScene();
+
+            if (!scene) {
+              console.error("[" + this.name + "] Cannot create instance: no active scene");
+              return null;
+            } // ⚠️ KIỂM TRA node đã có sẵn trong scene chưa
+
+
+            var node = scene.getChildByName(this.name);
+
+            if (node) {
+              // ✅ Dùng lại component gắn sẵn
+              inst = node.getComponent(this);
+
+              if (!inst) {
+                inst = node.addComponent(this);
+              }
+            } else {
+              // ✅ Nếu chưa có thì mới tạo mới
+              node = new Node(this.name);
+              scene.addChild(node);
+              inst = node.addComponent(this);
+            }
+
+            this._instances.set(this, inst);
+
+            return inst;
+          }
+        }]);
+
+        return BaseManager;
+      }(Component), _class2._instances = new Map(), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/BaseNotify.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './BaseUI.ts'], function (exports) {
+  'use strict';
+
+  var _inheritsLoose, cclegacy, _decorator, UIType, BaseUI;
+
+  return {
+    setters: [function (module) {
+      _inheritsLoose = module.inheritsLoose;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+    }, function (module) {
+      UIType = module.UIType;
+      BaseUI = module.BaseUI;
+    }],
+    execute: function () {
+      var _dec, _class;
+
+      cclegacy._RF.push({}, "dbfd6MWYPFHhZJxchacHq+G", "BaseNotify", undefined);
+
+      var ccclass = _decorator.ccclass;
+      var BaseNotify = exports('BaseNotify', (_dec = ccclass('BaseNotify'), _dec(_class = /*#__PURE__*/function (_BaseUI) {
+        _inheritsLoose(BaseNotify, _BaseUI);
+
+        function BaseNotify() {
+          return _BaseUI.apply(this, arguments) || this;
+        }
+
+        var _proto = BaseNotify.prototype;
+
+        _proto.init = function init() {
+          _BaseUI.prototype.init.call(this);
+
+          this.uiType = UIType.Notify;
+        };
+
+        _proto.show = function show(data) {
+          _BaseUI.prototype.show.call(this, data);
+        };
+
+        _proto.hide = function hide() {
+          _BaseUI.prototype.hide.call(this);
+        };
+
+        return BaseNotify;
+      }(BaseUI)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/BaseOverlap.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './BaseUI.ts'], function (exports) {
+  'use strict';
+
+  var _inheritsLoose, cclegacy, _decorator, UIType, BaseUI;
+
+  return {
+    setters: [function (module) {
+      _inheritsLoose = module.inheritsLoose;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+    }, function (module) {
+      UIType = module.UIType;
+      BaseUI = module.BaseUI;
+    }],
+    execute: function () {
+      var _dec, _class;
+
+      cclegacy._RF.push({}, "c18f3YBH3xPKYO0V3RTbudP", "BaseOverlap", undefined);
+
+      var ccclass = _decorator.ccclass;
+      var BaseOverlap = exports('BaseOverlap', (_dec = ccclass('BaseOverlap'), _dec(_class = /*#__PURE__*/function (_BaseUI) {
+        _inheritsLoose(BaseOverlap, _BaseUI);
+
+        function BaseOverlap() {
+          return _BaseUI.apply(this, arguments) || this;
+        }
+
+        var _proto = BaseOverlap.prototype;
+
+        _proto.init = function init() {
+          _BaseUI.prototype.init.call(this);
+
+          this.uiType = UIType.Overlap;
+        };
+
+        _proto.show = function show(data) {
+          _BaseUI.prototype.show.call(this, data);
+        };
+
+        _proto.hide = function hide() {
+          _BaseUI.prototype.hide.call(this);
+        };
+
+        return BaseOverlap;
+      }(BaseUI)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/BasePopup.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './BaseUI.ts'], function (exports) {
+  'use strict';
+
+  var _inheritsLoose, cclegacy, _decorator, Vec3, tween, UIType, BaseUI;
+
+  return {
+    setters: [function (module) {
+      _inheritsLoose = module.inheritsLoose;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Vec3 = module.Vec3;
+      tween = module.tween;
+    }, function (module) {
+      UIType = module.UIType;
+      BaseUI = module.BaseUI;
+    }],
+    execute: function () {
+      var _dec, _class;
+
+      cclegacy._RF.push({}, "aa8a2hP7CdGfpmZq20yrPXb", "BasePopup", undefined);
+
+      var ccclass = _decorator.ccclass;
+      var BasePopup = exports('BasePopup', (_dec = ccclass('BasePopup'), _dec(_class = /*#__PURE__*/function (_BaseUI) {
+        _inheritsLoose(BasePopup, _BaseUI);
+
+        function BasePopup() {
+          return _BaseUI.apply(this, arguments) || this;
+        }
+
+        var _proto = BasePopup.prototype;
+
+        _proto.init = function init() {
+          _BaseUI.prototype.init.call(this);
+
+          this.uiType = UIType.Popup;
+        };
+
+        _proto.show = function show(data) {
+          _BaseUI.prototype.show.call(this, data);
+
+          this.node.scale = new Vec3(0, 0, 0);
+          tween(this.node).to(0.5, {
+            scale: new Vec3(1, 1, 1)
+          }, {
+            easing: 'quadOut'
+          }).start();
+        };
+
+        _proto.hide = function hide() {
+          _BaseUI.prototype.hide.call(this);
+        };
+
+        return BasePopup;
+      }(BaseUI)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/BaseScreen.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './BaseUI.ts'], function (exports) {
+  'use strict';
+
+  var _inheritsLoose, cclegacy, _decorator, UIType, BaseUI;
+
+  return {
+    setters: [function (module) {
+      _inheritsLoose = module.inheritsLoose;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+    }, function (module) {
+      UIType = module.UIType;
+      BaseUI = module.BaseUI;
+    }],
+    execute: function () {
+      var _dec, _class;
+
+      cclegacy._RF.push({}, "55719i6quRDVowLNH6aCTH4", "BaseScreen", undefined);
+
+      var ccclass = _decorator.ccclass;
+      var BaseScreen = exports('BaseScreen', (_dec = ccclass('BaseScreen'), _dec(_class = /*#__PURE__*/function (_BaseUI) {
+        _inheritsLoose(BaseScreen, _BaseUI);
+
+        function BaseScreen() {
+          return _BaseUI.apply(this, arguments) || this;
+        }
+
+        var _proto = BaseScreen.prototype;
+
+        _proto.init = function init() {
+          _BaseUI.prototype.init.call(this);
+
+          this.uiType = UIType.Screen;
+        };
+
+        _proto.show = function show(data) {
+          _BaseUI.prototype.show.call(this, data);
+        };
+
+        _proto.hide = function hide() {
+          _BaseUI.prototype.hide.call(this);
+        };
+
+        return BaseScreen;
+      }(BaseUI)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/BaseUI.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  'use strict';
+
+  var _inheritsLoose, _createClass, cclegacy, _decorator, UIOpacity, BlockInputEvents, Component;
+
+  return {
+    setters: [function (module) {
+      _inheritsLoose = module.inheritsLoose;
+      _createClass = module.createClass;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      UIOpacity = module.UIOpacity;
+      BlockInputEvents = module.BlockInputEvents;
+      Component = module.Component;
+    }],
+    execute: function () {
+      exports('UIType', void 0);
+
+      var _dec, _class;
+
+      cclegacy._RF.push({}, "b35b37DeWlIXYLAQgAV8zaP", "BaseUI", undefined);
+
+      var ccclass = _decorator.ccclass;
+      var UIType;
+
+      (function (UIType) {
+        UIType["Screen"] = "Screen";
+        UIType["Popup"] = "Popup";
+        UIType["Notify"] = "Notify";
+        UIType["Overlap"] = "Overlap";
+      })(UIType || (UIType = exports('UIType', {})));
+
+      var BaseUI = exports('BaseUI', (_dec = ccclass('BaseUI'), _dec(_class = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(BaseUI, _Component);
+
+        function BaseUI() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+          _this.uiType = UIType.Screen;
+          _this.isShow = false;
+          _this.isInited = false;
+          return _this;
+        }
+
+        var _proto = BaseUI.prototype;
+
+        _proto.init = function init() {
+          if (this.isInited) return;
+          this.isInited = true;
+
+          if (!this.getComponent(UIOpacity)) {
+            this.uiOpacity = this.addComponent(UIOpacity);
+          } else {
+            this.uiOpacity = this.getComponent(UIOpacity);
+          }
+
+          if (!this.getComponent(BlockInputEvents)) {
+            this.blockInput = this.addComponent(BlockInputEvents);
+          } else {
+            this.blockInput = this.getComponent(BlockInputEvents);
+          }
+
+          this.node.active = true;
+        };
+
+        _proto.show = function show(data) {
+          this.node.active = true;
+          this.isShow = true;
+          this.setCanvasGroupActive(true);
+        };
+
+        _proto.hide = function hide() {
+          this.isShow = false;
+          this.setCanvasGroupActive(false);
+        };
+
+        _proto.setCanvasGroupActive = function setCanvasGroupActive(isActive) {
+          if (this.uiOpacity) {
+            this.uiOpacity.opacity = isActive ? 255 : 0;
+          }
+
+          if (this.blockInput) {
+            this.blockInput.enabled = isActive;
+          }
+        };
+
+        _createClass(BaseUI, [{
+          key: "IsShow",
+          get: function get() {
+            return this.isShow;
+          }
+        }, {
+          key: "IsInited",
+          get: function get() {
+            return this.isInited;
+          }
+        }, {
+          key: "UIType",
+          get: function get() {
+            return this.uiType;
+          }
+        }]);
+
+        return BaseUI;
+      }(Component)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/BetBase.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './ObserverManager.ts', './GameManager.ts', './UIManager.ts', './ScreenGame.ts'], function (exports) {
+  'use strict';
+
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Button, Component, ObserverManager, ObserverEvent, GameManager, UIManager, ScreenGame;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Button = module.Button;
+      Component = module.Component;
+    }, function (module) {
+      ObserverManager = module.ObserverManager;
+      ObserverEvent = module.ObserverEvent;
+    }, function (module) {
+      GameManager = module.GameManager;
+    }, function (module) {
+      UIManager = module.UIManager;
+    }, function (module) {
+      ScreenGame = module.ScreenGame;
+    }],
+    execute: function () {
+      exports('BetType', void 0);
+
+      var _dec, _dec2, _class, _class2, _descriptor;
+
+      cclegacy._RF.push({}, "4ccc5myKwhCsoQUqsGppTpW", "BetBase", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var BetType;
+
+      (function (BetType) {
+        BetType[BetType["None"] = 0] = "None";
+        BetType[BetType["Big"] = 1] = "Big";
+        BetType[BetType["Small"] = 2] = "Small";
+      })(BetType || (BetType = exports('BetType', {})));
+
+      var BetBase = exports('BetBase', (_dec = ccclass('BetBase'), _dec2 = property(Button), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(BetBase, _Component);
+
+        function BetBase() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+          _this.betType = void 0;
+          _this._lockHand = false;
+
+          _initializerDefineProperty(_this, "betButton", _descriptor, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = BetBase.prototype;
+
+        _proto.onLoad = function onLoad() {
+          ObserverManager.instance.on(ObserverEvent.LockHand, this.onLockHand.bind(this));
+          ObserverManager.instance.on(ObserverEvent.NumberBet, this.onBetNumber.bind(this));
+          this.betButton.node.on(Button.EventType.CLICK, this.onBet, this);
+        };
+
+        _proto.onDestroy = function onDestroy() {
+          ObserverManager.instance.off(ObserverEvent.LockHand, this.onLockHand.bind(this));
+          ObserverManager.instance.off(ObserverEvent.NumberBet, this.onBetNumber.bind(this));
+        };
+
+        _proto.onBet = function onBet() {
+          var _UIManager$instance$g;
+
+          if (this._lockHand) return;
+          GameManager.instance.betType = this.betType;
+          (_UIManager$instance$g = UIManager.instance.getExistUI(ScreenGame)) == null ? void 0 : _UIManager$instance$g.showBottom();
+        };
+
+        _proto.onLockHand = function onLockHand(isLock) {
+          console.log('BetBase onLockHand', isLock);
+          this._lockHand = isLock;
+        };
+
+        return BetBase;
+      }(Component), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "betButton", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/BigBet.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './BetBase.ts', './GameManager.ts'], function (exports) {
+  'use strict';
+
+  var _inheritsLoose, cclegacy, _decorator, BetType, BetBase, GameManager;
+
+  return {
+    setters: [function (module) {
+      _inheritsLoose = module.inheritsLoose;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+    }, function (module) {
+      BetType = module.BetType;
+      BetBase = module.BetBase;
+    }, function (module) {
+      GameManager = module.GameManager;
+    }],
+    execute: function () {
+      var _dec, _class;
+
+      cclegacy._RF.push({}, "e628flcL8dM4JJjquu6Bkno", "BigBet", undefined);
+
+      var ccclass = _decorator.ccclass;
+      var BigBet = exports('BigBet', (_dec = ccclass('BigBet'), _dec(_class = /*#__PURE__*/function (_BetBase) {
+        _inheritsLoose(BigBet, _BetBase);
+
+        function BigBet() {
+          return _BetBase.apply(this, arguments) || this;
+        }
+
+        var _proto = BigBet.prototype;
+
+        _proto.start = function start() {
+          this.betType = BetType.Big;
+        };
+
+        _proto.onBetNumber = function onBetNumber(number) {
+          if (this.betType !== GameManager.instance.betType) return;
+          GameManager.instance.numberPlayerBigBet++;
+          GameManager.instance.bigBetTotal += number;
+          GameManager.instance.numberBigBetOfPlayer += number;
+        };
+
+        return BigBet;
+      }(BetBase)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/BoardController.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './UIManager.ts', './ScreenGame.ts'], function (exports) {
+  'use strict';
+
+  var _inheritsLoose, cclegacy, _decorator, Component, UIManager, ScreenGame;
+
+  return {
+    setters: [function (module) {
+      _inheritsLoose = module.inheritsLoose;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Component = module.Component;
+    }, function (module) {
+      UIManager = module.UIManager;
+    }, function (module) {
+      ScreenGame = module.ScreenGame;
+    }],
+    execute: function () {
+      var _dec, _class;
+
+      cclegacy._RF.push({}, "12964gtw91OmIL3lBENcOHr", "BoardController", undefined);
+
+      var ccclass = _decorator.ccclass;
+      var BoardController = exports('BoardController', (_dec = ccclass('BoardController'), _dec(_class = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(BoardController, _Component);
+
+        function BoardController() {
+          return _Component.apply(this, arguments) || this;
+        }
+
+        var _proto = BoardController.prototype;
+
+        _proto.start = function start() {
+          UIManager.instance.showScreen(ScreenGame, null, true);
+        };
+
+        return BoardController;
+      }(Component)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/BubbleLabel.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  'use strict';
+
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Label, Tween, tween, Vec3, Component;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Label = module.Label;
+      Tween = module.Tween;
+      tween = module.tween;
+      Vec3 = module.Vec3;
+      Component = module.Component;
+    }],
+    execute: function () {
+      var _dec, _dec2, _class, _class2, _descriptor;
+
+      cclegacy._RF.push({}, "52cf4H7F81DprBn33tyGYn0", "BubbleLabel", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var BubbleLabel = exports('BubbleLabel', (_dec = ccclass('BubbleLabel'), _dec2 = property({
+        type: Label
+      }), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(BubbleLabel, _Component);
+
+        function BubbleLabel() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "label", _descriptor, _assertThisInitialized(_this));
+
+          _this.DURATION = 1;
+          return _this;
+        }
+
+        var _proto = BubbleLabel.prototype;
+
+        _proto.show = function show(text, worldPosition, direction, color, duration) {
+          var _this2 = this;
+
+          if (duration === void 0) {
+            duration = this.DURATION;
+          }
+
+          Tween.stopAllByTarget(this.node);
+          this.node.active = true;
+          this.label.string = text;
+          this.label.color = color;
+          this.node.setWorldPosition(worldPosition);
+          this.node.setScale(1, 1, 1);
+          var dir = direction.clone();
+          dir.normalize();
+          var targetPos = this.node.getPosition().clone().add(dir.multiplyScalar(50));
+          tween(this.node).parallel(tween().target(this.node).to(duration, {
+            scale: new Vec3(1.5, 1.5, 1.5)
+          }, {
+            easing: 'quadOut'
+          }), tween().target(this.node).to(duration, {
+            position: targetPos
+          }, {
+            easing: 'quartInOut'
+          })).call(function () {
+            tween(_this2.node).to(duration, {
+              scale: new Vec3(0.01, 0.01, 0.01)
+            }, {
+              easing: 'quadOut'
+            }).call(function () {
+              _this2.node.active = false;
+            }).start();
+          }).start();
+        };
+
+        return BubbleLabel;
+      }(Component), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "label", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/CoverResultController.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './ObserverManager.ts'], function (exports) {
+  'use strict';
+
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Node, Label, Vec3, UITransform, Vec2, Component, ObserverManager, ObserverEvent;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Node = module.Node;
+      Label = module.Label;
+      Vec3 = module.Vec3;
+      UITransform = module.UITransform;
+      Vec2 = module.Vec2;
+      Component = module.Component;
+    }, function (module) {
+      ObserverManager = module.ObserverManager;
+      ObserverEvent = module.ObserverEvent;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2;
+
+      cclegacy._RF.push({}, "42ed00GfDFO/IZ9MsnvunSI", "CoverResultController", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var CoverController = exports('CoverController', (_dec = ccclass('CoverController'), _dec2 = property(Node), _dec3 = property(Label), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(CoverController, _Component);
+
+        function CoverController() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "coverResultNode", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "timerLabel", _descriptor2, _assertThisInitialized(_this));
+
+          _this._offset = new Vec3();
+          _this._localPos = new Vec3();
+          _this._originPosition = new Vec3();
+          _this._timer = 0;
+          _this.TIME_CHECK = 6;
+          return _this;
+        }
+
+        var _proto = CoverController.prototype;
+
+        _proto.onLoad = function onLoad() {
+          var _this2 = this;
+
+          if (!this.coverResultNode) return;
+          this._parentUI = this.coverResultNode.parent.getComponent(UITransform);
+          this.coverResultNode.on(Node.EventType.TOUCH_START, function (event) {
+            var touchPos = event.getLocation();
+            _this2._localPos = _this2._parentUI.convertToNodeSpaceAR(new Vec3(touchPos.x, touchPos.y, 0));
+            _this2._offset = _this2.coverResultNode.position.clone().subtract(_this2._localPos);
+          });
+          this.coverResultNode.on(Node.EventType.TOUCH_MOVE, function (event) {
+            var touchPos = event.getLocation();
+            _this2._localPos = _this2._parentUI.convertToNodeSpaceAR(new Vec3(touchPos.x, touchPos.y, 0));
+
+            _this2.coverResultNode.setPosition(_this2._localPos.add(_this2._offset));
+          });
+          this.coverResultNode.on(Node.EventType.TOUCH_END, function () {
+            return _this2.checkPosition();
+          });
+          this.coverResultNode.on(Node.EventType.TOUCH_CANCEL, function () {
+            return _this2.checkPosition();
+          });
+        };
+
+        _proto.start = function start() {
+          this._originPosition = this.coverResultNode.position.clone();
+        };
+
+        _proto.update = function update(deltaTime) {
+          if (!this.coverResultNode.active) return;
+          this.timerLabel.node.active = true;
+          this._timer += deltaTime;
+
+          if (this._timer >= this.TIME_CHECK) {
+            this.timerLabel.node.active = false;
+            this._timer = 0;
+            this.checkPosition(true);
+          }
+
+          this.timerLabel.string = Math.floor(this.TIME_CHECK - this._timer).toString();
+        };
+
+        _proto.checkPosition = function checkPosition(forceHide) {
+          if (forceHide === void 0) {
+            forceHide = false;
+          }
+
+          if (forceHide || this.checkOutRadius(Vec2.clone(this.coverResultNode.position))) {
+            this.coverResultNode.active = false;
+            this.timerLabel.node.active = false;
+            this._timer = 0;
+            ObserverManager.instance.emit(ObserverEvent.CoverResult, false);
+            this.coverResultNode.setPosition(this._originPosition);
+          }
+        };
+
+        _proto.checkOutRadius = function checkOutRadius(touchPos) {
+          var uiTransform = this.coverResultNode.getComponent(UITransform);
+          var radius = uiTransform.width * .5;
+          console.log('radius: ', radius);
+          var nodePos = new Vec2(this._originPosition.x, this._originPosition.y);
+          console.log('distance: ', Vec2.distance(touchPos, nodePos));
+          return Vec2.distance(touchPos, nodePos) > radius;
+        };
+
+        return CoverController;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "coverResultNode", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "timerLabel", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/DiceRotateEffect.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  'use strict';
+
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, sp, Component;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      sp = module.sp;
+      Component = module.Component;
+    }],
+    execute: function () {
+      var _dec, _dec2, _class, _class2, _descriptor;
+
+      cclegacy._RF.push({}, "f849e3xxCdEE4x9oy6yGCjx", "DiceRotateEffect", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var DiceRotateEffect = exports('DiceRotateEffect', (_dec = ccclass('DiceRotateEffect'), _dec2 = property(sp.Skeleton), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(DiceRotateEffect, _Component);
+
+        function DiceRotateEffect() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "skeleton", _descriptor, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = DiceRotateEffect.prototype;
+
+        _proto.onEnable = function onEnable() {
+          var _this2 = this;
+
+          this.skeleton.setAnimation(0, 'Idle', false);
+          this.skeleton.setCompleteListener(function () {
+            _this2.node.active = false;
+          });
+        };
+
+        return DiceRotateEffect;
+      }(Component), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "skeleton", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/DotResult.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './ObserverManager.ts', './GameManager.ts'], function (exports) {
+  'use strict';
+
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Sprite, SpriteFrame, Component, ObserverManager, ObserverEvent, GameManager;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Sprite = module.Sprite;
+      SpriteFrame = module.SpriteFrame;
+      Component = module.Component;
+    }, function (module) {
+      ObserverManager = module.ObserverManager;
+      ObserverEvent = module.ObserverEvent;
+    }, function (module) {
+      GameManager = module.GameManager;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2;
+
+      cclegacy._RF.push({}, "dae91uCHpdMCp21M1+Ey5FN", "DotResult", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var DotResult = exports('DotResult', (_dec = ccclass('DotResult'), _dec2 = property([Sprite]), _dec3 = property([SpriteFrame]), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(DotResult, _Component);
+
+        function DotResult() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "dots", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "dotFrames", _descriptor2, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = DotResult.prototype;
+
+        _proto.start = function start() {
+          ObserverManager.instance.on(ObserverEvent.UpdateDotResult, this.updateDotResult.bind(this));
+          this.updateDotResult(GameManager.instance.dotResult);
+        };
+
+        _proto.updateDotResult = function updateDotResult(dotResult) {
+          for (var i = 0; i < dotResult.length; i++) {
+            this.dots[i].spriteFrame = this.dotFrames[dotResult[i] ? 1 : 0];
+          }
+        };
+
+        return DotResult;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "dots", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return [];
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "dotFrames", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return [];
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/GameManager.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './BaseManager.ts', './ObserverManager.ts', './UIManager.ts', './ScreenGame.ts', './BetBase.ts'], function (exports) {
+  'use strict';
+
+  var _inheritsLoose, _createClass, _asyncToGenerator, _regeneratorRuntime, cclegacy, _decorator, director, BaseManager, ObserverManager, ObserverEvent, UIManager, ScreenGame, BetType;
+
+  return {
+    setters: [function (module) {
+      _inheritsLoose = module.inheritsLoose;
+      _createClass = module.createClass;
+      _asyncToGenerator = module.asyncToGenerator;
+      _regeneratorRuntime = module.regeneratorRuntime;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      director = module.director;
+    }, function (module) {
+      BaseManager = module.BaseManager;
+    }, function (module) {
+      ObserverManager = module.ObserverManager;
+      ObserverEvent = module.ObserverEvent;
+    }, function (module) {
+      UIManager = module.UIManager;
+    }, function (module) {
+      ScreenGame = module.ScreenGame;
+    }, function (module) {
+      BetType = module.BetType;
+    }],
+    execute: function () {
+      exports('SceneName', void 0);
+
+      var _dec, _class;
+
+      cclegacy._RF.push({}, "d400byDuhVCyac1seK+8g4k", "GameManager", undefined);
+
+      var ccclass = _decorator.ccclass;
+      var SceneName;
+
+      (function (SceneName) {
+        SceneName["Gameplay"] = "gameplay";
+      })(SceneName || (SceneName = exports('SceneName', {})));
+
+      var GameManager = exports('GameManager', (_dec = ccclass('GameManager'), _dec(_class = /*#__PURE__*/function (_BaseManager) {
+        _inheritsLoose(GameManager, _BaseManager);
+
+        function GameManager() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _BaseManager.call.apply(_BaseManager, [this].concat(args)) || this;
+          _this._playerMoney = 50000;
+          _this._bigBetTotal = 0;
+          _this._numberPlayerBigBet = 0;
+          _this._numberBigBetOfPlayer = 0;
+          _this._smallBetTotal = 0;
+          _this._numberPlayerSmallBet = 0;
+          _this._numberSmallBetOfPlayer = 0;
+          _this.canCountdown = false;
+          _this.betType = BetType.None;
+          _this.dotResult = Array.from({
+            length: 10
+          }, function () {
+            return Math.random() < 0.5;
+          });
+          _this.isShowHand = false;
+          _this._timer = 0;
+          _this._timerCount = 0;
+          _this.TIME_COUNT = 31;
+          _this.TIME_TICK = 1;
+          _this._currentRandomTimer = 1;
+          _this.RandomTimer = [.4, .5, .6, .3, .2, .7, .8];
+          return _this;
+        }
+
+        var _proto = GameManager.prototype; //#endregion
+        //#endregion
+        //#region Methods
+        // protected onLoad(): void {
+        //     super.onLoad();
+        //     localStorage.clear();
+        // }
+
+        _proto.start = function start() {
+          var _this2 = this;
+
+          this._timerCount = this.TIME_COUNT;
+          this.playerMoney = this.loadPlayerMoney();
+          this.delay(1000).then(function () {
+            _this2.loadSceneAsync(SceneName.Gameplay);
+          });
+        };
+
+        _proto.update = function update(deltaTime) {
+          if (!this.canCountdown) return;
+          this._timer += deltaTime;
+
+          if (this._timerCount <= 0) {
+            this._timerCount = this.TIME_COUNT;
+            this._timer = 0;
+            ObserverManager.instance.emit(ObserverEvent.RollDice);
+            this.canCountdown = false;
+          }
+
+          if (this._timer >= this._currentRandomTimer) this.fakeNumberBet();
+
+          if (this._timer >= this.TIME_TICK) {
+            this._timer -= this.TIME_TICK;
+            this._timerCount--;
+            ObserverManager.instance.emit(ObserverEvent.UpdateTimer, this._timerCount);
+          }
+        };
+
+        _proto.fakeNumberBet = function fakeNumberBet() {
+          this._currentRandomTimer = this.RandomTimer[Math.floor(Math.random() * this.RandomTimer.length)];
+          this.numberPlayerBigBet += Math.floor(Math.random() * 4);
+          this.bigBetTotal += Math.floor(Math.random() * 10000) + 3000;
+          this.numberPlayerSmallBet += Math.floor(Math.random() * 4);
+          this.smallBetTotal += Math.floor(Math.random() * 10000) + 3000;
+        };
+
+        _proto.resetCountdown = /*#__PURE__*/function () {
+          var _resetCountdown = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+            var _UIManager$instance$g;
+
+            return _regeneratorRuntime().wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.delay(2000);
+
+                  case 2:
+                    this.canCountdown = true;
+                    this._currentRandomTimer = 1;
+                    _context.next = 6;
+                    return this.delay(1000);
+
+                  case 6:
+                    (_UIManager$instance$g = UIManager.instance.getExistUI(ScreenGame)) == null ? void 0 : _UIManager$instance$g.lightRotateEffect.hideLight();
+
+                  case 7:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+
+          function resetCountdown() {
+            return _resetCountdown.apply(this, arguments);
+          }
+
+          return resetCountdown;
+        }();
+
+        _proto.delay = function delay(ms) {
+          return new Promise(function (resolve) {
+            return setTimeout(resolve, ms);
+          });
+        };
+
+        _proto.loadSceneAsync = /*#__PURE__*/function () {
+          var _loadSceneAsync = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(sceneName) {
+            return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    return _context2.abrupt("return", new Promise(function (resolve, reject) {
+                      director.loadScene(sceneName, function (err) {
+                        if (err) {
+                          console.error("Failed to load scene \"" + sceneName + "\"", err);
+                          reject(err);
+                        } else {
+                          console.log("Scene \"" + sceneName + "\" loaded successfully");
+                          GameManager.instance.canCountdown = true;
+                          resolve();
+                        }
+                      });
+                    }));
+
+                  case 1:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2);
+          }));
+
+          function loadSceneAsync(_x) {
+            return _loadSceneAsync.apply(this, arguments);
+          }
+
+          return loadSceneAsync;
+        }();
+
+        _proto.formatNumber = function formatNumber(value) {
+          return value.toLocaleString('en-US');
+        };
+
+        _proto.savePlayerMoney = function savePlayerMoney() {
+          localStorage.setItem('playerMoney', this._playerMoney.toString());
+        };
+
+        _proto.loadPlayerMoney = function loadPlayerMoney() {
+          var playerMoney = localStorage.getItem('playerMoney');
+          return playerMoney ? parseInt(playerMoney) : 100000;
+        } //#endregion
+        ;
+
+        _createClass(GameManager, [{
+          key: "playerMoney",
+          get: function get() {
+            return this._playerMoney;
+          },
+          set: function set(value) {
+            this._playerMoney = value >= 0 ? value : 0;
+            this.savePlayerMoney();
+            ObserverManager.instance.emit(ObserverEvent.UpdatePlayerMoneyLabel, this._playerMoney);
+          } //Big
+
+        }, {
+          key: "bigBetTotal",
+          get: function get() {
+            return this._bigBetTotal;
+          },
+          set: function set(value) {
+            this._bigBetTotal = value;
+            ObserverManager.instance.emit(ObserverEvent.UpdateBigBetTotalLabel, this._bigBetTotal);
+          }
+        }, {
+          key: "numberPlayerBigBet",
+          get: function get() {
+            return this._numberPlayerBigBet;
+          },
+          set: function set(value) {
+            this._numberPlayerBigBet = value;
+            ObserverManager.instance.emit(ObserverEvent.UpdateNumberPlayerBigBetLabel, this._numberPlayerBigBet);
+          }
+        }, {
+          key: "numberBigBetOfPlayer",
+          get: function get() {
+            return this._numberBigBetOfPlayer;
+          },
+          set: function set(value) {
+            this._numberBigBetOfPlayer = value;
+            ObserverManager.instance.emit(ObserverEvent.UpdateNumberBigBetOfPlayerLabel, this._numberBigBetOfPlayer);
+          } //Small
+
+        }, {
+          key: "smallBetTotal",
+          get: function get() {
+            return this._smallBetTotal;
+          },
+          set: function set(value) {
+            this._smallBetTotal = value;
+            ObserverManager.instance.emit(ObserverEvent.UpdateSmallBetTotalLabel, this._smallBetTotal);
+          }
+        }, {
+          key: "numberPlayerSmallBet",
+          get: function get() {
+            return this._numberPlayerSmallBet;
+          },
+          set: function set(value) {
+            this._numberPlayerSmallBet = value;
+            ObserverManager.instance.emit(ObserverEvent.UpdateNumberPlayerSmallBetLabel, this._numberPlayerSmallBet);
+          }
+        }, {
+          key: "numberSmallBetOfPlayer",
+          get: function get() {
+            return this._numberSmallBetOfPlayer;
+          },
+          set: function set(value) {
+            this._numberSmallBetOfPlayer = value;
+            ObserverManager.instance.emit(ObserverEvent.UpdateNumberSmallBetOfPlayerLabel, this._numberSmallBetOfPlayer);
+          } //#endregion
+          //#region Variables
+
+        }]);
+
+        return GameManager;
+      }(BaseManager)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/HandButtonController.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './GameManager.ts'], function (exports) {
+  'use strict';
+
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Button, SpriteFrame, Sprite, Component, GameManager;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Button = module.Button;
+      SpriteFrame = module.SpriteFrame;
+      Sprite = module.Sprite;
+      Component = module.Component;
+    }, function (module) {
+      GameManager = module.GameManager;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2;
+
+      cclegacy._RF.push({}, "9ded5iLhk5Ntr+XEi8fefoS", "HandButtonController", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var HandButtonController = exports('HandButtonController', (_dec = ccclass('HandButtonController'), _dec2 = property(Button), _dec3 = property([SpriteFrame]), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(HandButtonController, _Component);
+
+        function HandButtonController() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "handButton", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "handSpriteFrames", _descriptor2, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = HandButtonController.prototype;
+
+        _proto.start = function start() {
+          this.handButton.node.on(Button.EventType.CLICK, this.onHandButtonClick, this);
+        };
+
+        _proto.onHandButtonClick = function onHandButtonClick() {
+          if (GameManager.instance.isShowHand) {
+            GameManager.instance.isShowHand = false;
+            this.handButton.node.getComponent(Sprite).spriteFrame = this.handSpriteFrames[1];
+          } else {
+            GameManager.instance.isShowHand = true;
+            this.handButton.node.getComponent(Sprite).spriteFrame = this.handSpriteFrames[0];
+          }
+        };
+
+        return HandButtonController;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "handButton", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "handSpriteFrames", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/LightRotateEffect.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  'use strict';
+
+  var _inheritsLoose, cclegacy, _decorator, tween, Vec3, Component;
+
+  return {
+    setters: [function (module) {
+      _inheritsLoose = module.inheritsLoose;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      tween = module.tween;
+      Vec3 = module.Vec3;
+      Component = module.Component;
+    }],
+    execute: function () {
+      var _dec, _class;
+
+      cclegacy._RF.push({}, "bd30e29MAxDzJPjiNA8c8cv", "LightRotateEffect", undefined);
+
+      var ccclass = _decorator.ccclass;
+      var LightRotateEffect = exports('LightRotateEffect', (_dec = ccclass('LightRotateEffect'), _dec(_class = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(LightRotateEffect, _Component);
+
+        function LightRotateEffect() {
+          return _Component.apply(this, arguments) || this;
+        }
+
+        var _proto = LightRotateEffect.prototype;
+
+        _proto.showLight = function showLight(position) {
+          try {
+            console.log('showLight', position);
+            this.node.setWorldPosition(position);
+            this.node.active = true;
+            tween(this.node).to(1, {
+              scale: new Vec3(3, 3, 3),
+              angle: 180
+            }).to(1, {
+              scale: new Vec3(2, 2, 2),
+              angle: 360
+            }).union().repeatForever().start();
+            console.log('Light tween started OK');
+          } catch (e) {
+            console.error('showLight error:', e);
+          }
+        };
+
+        _proto.hideLight = function hideLight() {
+          tween(this.node).stop();
+          this.node.active = false;
+        };
+
+        return LightRotateEffect;
+      }(Component)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/main", ['./BoardController.ts', './BetBase.ts', './BigBet.ts', './SmallBet.ts', './AudioManager.ts', './BaseManager.ts', './GameManager.ts', './ObserverManager.ts', './UIManager.ts', './BaseNotify.ts', './BaseOverlap.ts', './BasePopup.ts', './BaseScreen.ts', './BaseUI.ts', './OverlapLoading.ts', './PopupHelp.ts', './ScreenGame.ts', './BubbleLabel.ts', './CoverResultController.ts', './DiceRotateEffect.ts', './DotResult.ts', './HandButtonController.ts', './LightRotateEffect.ts', './WebViewController.ts'], function () {
+  'use strict';
+
+  return {
+    setters: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+    execute: function () {}
+  };
+});
+
+System.register("chunks:///_virtual/ObserverManager.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './BaseManager.ts'], function (exports) {
+  'use strict';
+
+  var _inheritsLoose, _createForOfIteratorHelperLoose, cclegacy, _decorator, BaseManager;
+
+  return {
+    setters: [function (module) {
+      _inheritsLoose = module.inheritsLoose;
+      _createForOfIteratorHelperLoose = module.createForOfIteratorHelperLoose;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+    }, function (module) {
+      BaseManager = module.BaseManager;
+    }],
+    execute: function () {
+      exports('ObserverEvent', void 0);
+
+      var _dec, _class;
+
+      cclegacy._RF.push({}, "ad949BefgJOF6dMkY2fSBfp", "ObserverManager", undefined);
+
+      var ccclass = _decorator.ccclass;
+      var ObserverEvent;
+
+      (function (ObserverEvent) {
+        ObserverEvent["UpdatePlayerMoneyLabel"] = "updatePlayerMoneyLabel";
+        ObserverEvent["RollDice"] = "rollDice";
+        ObserverEvent["UpdateTimer"] = "updateTimer";
+        ObserverEvent["NumberBet"] = "numberBet";
+        ObserverEvent["UpdateTotalBetLabel"] = "updateTotalBetLabel";
+        ObserverEvent["UpdateBigBetTotalLabel"] = "updateBigBetTotalLabel";
+        ObserverEvent["UpdateSmallBetTotalLabel"] = "updateSmallBetTotalLabel";
+        ObserverEvent["UpdateDotResult"] = "updateDotResult";
+        ObserverEvent["LockHand"] = "lockHand";
+        ObserverEvent["UpdateNumberBigBetOfPlayerLabel"] = "updateNumberBigBetPlayerLabel";
+        ObserverEvent["UpdateNumberSmallBetOfPlayerLabel"] = "updateNumberSmallBetPlayerLabel";
+        ObserverEvent["CoverResult"] = "coverResult";
+        ObserverEvent["UpdateNumberPlayerBigBetLabel"] = "updateNumberPlayerBigBetLabel";
+        ObserverEvent["UpdateNumberPlayerSmallBetLabel"] = "updateNumberPlayerSmallBetLabel";
+      })(ObserverEvent || (ObserverEvent = exports('ObserverEvent', {})));
+
+      var ObserverManager = exports('ObserverManager', (_dec = ccclass('ObserverManager'), _dec(_class = /*#__PURE__*/function (_BaseManager) {
+        _inheritsLoose(ObserverManager, _BaseManager);
+
+        function ObserverManager() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _BaseManager.call.apply(_BaseManager, [this].concat(args)) || this;
+          _this._events = new Map();
+          return _this;
+        }
+
+        var _proto = ObserverManager.prototype;
+
+        _proto.on = function on(eventName, callback) {
+          if (!this._events.has(eventName)) {
+            this._events.set(eventName, new Set());
+          }
+
+          this._events.get(eventName).add(callback);
+        };
+
+        _proto.off = function off(eventName, callback) {
+          if (!this._events.has(eventName)) return;
+
+          if (!callback) {
+            this._events["delete"](eventName);
+          } else {
+            this._events.get(eventName)["delete"](callback);
+          }
+        };
+
+        _proto.emit = function emit(eventName) {
+          if (!this._events.has(eventName)) return;
+
+          for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+            args[_key2 - 1] = arguments[_key2];
+          }
+
+          for (var _iterator = _createForOfIteratorHelperLoose(this._events.get(eventName)), _step; !(_step = _iterator()).done;) {
+            var cb = _step.value;
+            cb.apply(void 0, args);
+          }
+        };
+
+        _proto.clearAll = function clearAll() {
+          this._events.clear();
+        };
+
+        return ObserverManager;
+      }(BaseManager)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/OverlapLoading.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './BaseOverlap.ts'], function (exports) {
+  'use strict';
+
+  var _inheritsLoose, cclegacy, _decorator, BaseOverlap;
+
+  return {
+    setters: [function (module) {
+      _inheritsLoose = module.inheritsLoose;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+    }, function (module) {
+      BaseOverlap = module.BaseOverlap;
+    }],
+    execute: function () {
+      var _dec, _class;
+
+      cclegacy._RF.push({}, "a77fbkGB9ZFj5X8/yfFffjk", "OverlapLoading", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var OverlapLoading = exports('OverlapLoading', (_dec = ccclass('OverlapLoading'), _dec(_class = /*#__PURE__*/function (_BaseOverlap) {
+        _inheritsLoose(OverlapLoading, _BaseOverlap);
+
+        function OverlapLoading() {
+          return _BaseOverlap.apply(this, arguments) || this;
+        }
+
+        var _proto = OverlapLoading.prototype;
+
+        _proto.init = function init() {
+          _BaseOverlap.prototype.init.call(this);
+        };
+
+        _proto.show = function show(data) {
+          _BaseOverlap.prototype.show.call(this, data);
+        };
+
+        _proto.hide = function hide() {
+          _BaseOverlap.prototype.hide.call(this);
+        };
+
+        return OverlapLoading;
+      }(BaseOverlap)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/PopupHelp.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './BasePopup.ts'], function (exports) {
+  'use strict';
+
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Button, BasePopup;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Button = module.Button;
+    }, function (module) {
+      BasePopup = module.BasePopup;
+    }],
+    execute: function () {
+      var _dec, _dec2, _class, _class2, _descriptor;
+
+      cclegacy._RF.push({}, "b9b1eQKr8hE4K5cYoajeORb", "PopupHelp", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var PopupHelp = exports('PopupHelp', (_dec = ccclass('PopupHelp'), _dec2 = property({
+        type: Button,
+        group: 'Node'
+      }), _dec(_class = (_class2 = /*#__PURE__*/function (_BasePopup) {
+        _inheritsLoose(PopupHelp, _BasePopup);
+
+        function PopupHelp() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _BasePopup.call.apply(_BasePopup, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "closeButton", _descriptor, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = PopupHelp.prototype;
+
+        _proto.init = function init() {
+          _BasePopup.prototype.init.call(this);
+
+          this.closeButton.node.on(Button.EventType.CLICK, this.hide, this);
+        };
+
+        _proto.show = function show(data) {
+          _BasePopup.prototype.show.call(this, data);
+
+          this.closeButton.interactable = true;
+        };
+
+        _proto.hide = function hide() {
+          _BasePopup.prototype.hide.call(this);
+
+          this.closeButton.interactable = false;
+        };
+
+        return PopupHelp;
+      }(BasePopup), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "closeButton", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/ScreenGame.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './BaseScreen.ts', './ObserverManager.ts', './GameManager.ts', './BetBase.ts', './UIManager.ts', './PopupHelp.ts', './LightRotateEffect.ts', './BaseUI.ts', './BubbleLabel.ts'], function (exports) {
+  'use strict';
+
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, _asyncToGenerator, _regeneratorRuntime, cclegacy, _decorator, Label, Node, Button, Sprite, Animation, SpriteFrame, UITransform, Tween, tween, Vec3, Color, BaseScreen, ObserverManager, ObserverEvent, GameManager, BetType, UIManager, PopupHelp, LightRotateEffect, UIType, BubbleLabel;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+      _asyncToGenerator = module.asyncToGenerator;
+      _regeneratorRuntime = module.regeneratorRuntime;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Label = module.Label;
+      Node = module.Node;
+      Button = module.Button;
+      Sprite = module.Sprite;
+      Animation = module.Animation;
+      SpriteFrame = module.SpriteFrame;
+      UITransform = module.UITransform;
+      Tween = module.Tween;
+      tween = module.tween;
+      Vec3 = module.Vec3;
+      Color = module.Color;
+    }, function (module) {
+      BaseScreen = module.BaseScreen;
+    }, function (module) {
+      ObserverManager = module.ObserverManager;
+      ObserverEvent = module.ObserverEvent;
+    }, function (module) {
+      GameManager = module.GameManager;
+    }, function (module) {
+      BetType = module.BetType;
+    }, function (module) {
+      UIManager = module.UIManager;
+    }, function (module) {
+      PopupHelp = module.PopupHelp;
+    }, function (module) {
+      LightRotateEffect = module.LightRotateEffect;
+    }, function (module) {
+      UIType = module.UIType;
+    }, function (module) {
+      BubbleLabel = module.BubbleLabel;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15, _descriptor16, _descriptor17, _descriptor18, _descriptor19, _descriptor20, _descriptor21, _descriptor22, _descriptor23, _descriptor24, _descriptor25, _descriptor26, _descriptor27, _descriptor28, _descriptor29, _descriptor30, _descriptor31, _descriptor32, _descriptor33, _descriptor34, _descriptor35, _descriptor36, _descriptor37;
+
+      cclegacy._RF.push({}, "d684fbG8ARLZaEvkCsCpxej", "ScreenGame", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var ScreenGame = exports('ScreenGame', (_dec = ccclass('ScreenGame'), _dec2 = property({
+        type: Label,
+        group: 'Player Info'
+      }), _dec3 = property({
+        type: Label,
+        group: 'Player Info'
+      }), _dec4 = property({
+        type: Label,
+        group: 'Player Info'
+      }), _dec5 = property({
+        type: Label,
+        group: 'Big Bet'
+      }), _dec6 = property({
+        type: Label,
+        group: 'Big Bet'
+      }), _dec7 = property({
+        type: Node,
+        group: 'Big Bet'
+      }), _dec8 = property({
+        type: Button,
+        group: 'Big Bet'
+      }), _dec9 = property({
+        type: Label,
+        group: 'Small Bet'
+      }), _dec10 = property({
+        type: Label,
+        group: 'Small Bet'
+      }), _dec11 = property({
+        type: Node,
+        group: 'Small Bet'
+      }), _dec12 = property({
+        type: Button,
+        group: 'Small Bet'
+      }), _dec13 = property({
+        type: Node,
+        group: 'Dice'
+      }), _dec14 = property({
+        type: Sprite,
+        group: 'Dice'
+      }), _dec15 = property({
+        type: Sprite,
+        group: 'Dice'
+      }), _dec16 = property({
+        type: Sprite,
+        group: 'Dice'
+      }), _dec17 = property({
+        type: Node,
+        group: 'Dice'
+      }), _dec18 = property({
+        type: Animation,
+        group: 'Dice'
+      }), _dec19 = property({
+        type: [SpriteFrame],
+        group: 'Dice'
+      }), _dec20 = property({
+        type: Label,
+        group: 'Effect'
+      }), _dec21 = property({
+        type: Node,
+        group: 'Effect'
+      }), _dec22 = property({
+        type: Node,
+        group: 'Effect'
+      }), _dec23 = property({
+        type: LightRotateEffect,
+        group: 'Effect'
+      }), _dec24 = property({
+        type: BubbleLabel,
+        group: 'Effect'
+      }), _dec25 = property({
+        type: UITransform,
+        group: 'Effect'
+      }), _dec26 = property({
+        type: UITransform,
+        group: 'Effect'
+      }), _dec27 = property({
+        type: Button,
+        group: 'Bet'
+      }), _dec28 = property({
+        type: Button,
+        group: 'Bet'
+      }), _dec29 = property({
+        type: Button,
+        group: 'Bet'
+      }), _dec30 = property({
+        type: Button,
+        group: 'Bet'
+      }), _dec31 = property({
+        type: Button,
+        group: 'Bet'
+      }), _dec32 = property({
+        type: Button,
+        group: 'Bet'
+      }), _dec33 = property({
+        type: Button,
+        group: 'Bet'
+      }), _dec34 = property({
+        type: Button,
+        group: 'Bet'
+      }), _dec35 = property({
+        type: Button,
+        group: 'Bet'
+      }), _dec36 = property({
+        type: Button,
+        group: 'Bet'
+      }), _dec37 = property({
+        type: Button,
+        group: 'Button'
+      }), _dec38 = property({
+        type: Button,
+        group: 'Button'
+      }), _dec(_class = (_class2 = /*#__PURE__*/function (_BaseScreen) {
+        _inheritsLoose(ScreenGame, _BaseScreen);
+
+        function ScreenGame() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _BaseScreen.call.apply(_BaseScreen, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "playerMoneyLabel", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "numberPlayerBigBetLabel", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "numberPlayerSmallBetLabel", _descriptor3, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "numberBigBetOfPlayerLabel", _descriptor4, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "bigBetTotalLabel", _descriptor5, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "bigTitleNode", _descriptor6, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "bigBetButton", _descriptor7, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "numberSmallBetOfPlayerLabel", _descriptor8, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "smallBetTotalLabel", _descriptor9, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "smallTitleNode", _descriptor10, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "smallBetButton", _descriptor11, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "diceResultNode", _descriptor12, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "dice1Sprite", _descriptor13, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "dice2Sprite", _descriptor14, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "dice3Sprite", _descriptor15, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "diceAnimationNode", _descriptor16, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "diceAnimation", _descriptor17, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "diceSprites", _descriptor18, _assertThisInitialized(_this));
+
+          _this.dice1Number = 0;
+          _this.dice2Number = 0;
+          _this.dice3Number = 0;
+          _this.totalNumber = 0;
+          _this.TWEEN_TEXT_DURATION = 0.25;
+          _this.TWEEN_SCALE_FACTOR = 2;
+          _this._isShowBottom = false;
+          _this._rollDiceHandler = _this.rollDice.bind(_assertThisInitialized(_this));
+          _this._updateTimerHandler = _this.updateTimer.bind(_assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "timeLabel", _descriptor19, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "rotateEffectNode", _descriptor20, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "coverResultNode", _descriptor21, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "lightRotateEffect", _descriptor22, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "bubbleLabel", _descriptor23, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "bottomUITransform", _descriptor24, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "maskBottomUITransform", _descriptor25, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "number1kButton", _descriptor26, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "number5kButton", _descriptor27, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "number10kButton", _descriptor28, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "number50kButton", _descriptor29, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "number100kButton", _descriptor30, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "number200kButton", _descriptor31, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "number500kButton", _descriptor32, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "number1mButton", _descriptor33, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "number5mButton", _descriptor34, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "number10mButton", _descriptor35, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "closeBottomButton", _descriptor36, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "helpButton", _descriptor37, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = ScreenGame.prototype; //#endregion
+        //#endregion
+
+        _proto.init = function init() {
+          _BaseScreen.prototype.init.call(this);
+
+          ObserverManager.instance.on(ObserverEvent.RollDice, this._rollDiceHandler);
+          ObserverManager.instance.on(ObserverEvent.UpdateTimer, this._updateTimerHandler);
+          ObserverManager.instance.on(ObserverEvent.UpdatePlayerMoneyLabel, this.updatePlayerMoneyLabel.bind(this));
+          ObserverManager.instance.on(ObserverEvent.UpdateBigBetTotalLabel, this.updateBigBetTotalLabel.bind(this));
+          ObserverManager.instance.on(ObserverEvent.UpdateNumberPlayerBigBetLabel, this.updateNumberPlayerBigBetLabel.bind(this));
+          ObserverManager.instance.on(ObserverEvent.UpdateNumberBigBetOfPlayerLabel, this.updateNumberBigBetOfPlayerLabel.bind(this));
+          ObserverManager.instance.on(ObserverEvent.UpdateSmallBetTotalLabel, this.updateSmallBetTotalLabel.bind(this));
+          ObserverManager.instance.on(ObserverEvent.UpdateNumberPlayerSmallBetLabel, this.updateNumberPlayerSmallBetLabel.bind(this));
+          ObserverManager.instance.on(ObserverEvent.UpdateNumberSmallBetOfPlayerLabel, this.updateNumberSmallBetOfPlayerLabel.bind(this));
+          ObserverManager.instance.on(ObserverEvent.CoverResult, this.coverResult.bind(this));
+          this.number1kButton.node.on(Button.EventType.CLICK, this.number1k, this);
+          this.number5kButton.node.on(Button.EventType.CLICK, this.number5k, this);
+          this.number10kButton.node.on(Button.EventType.CLICK, this.number10k, this);
+          this.number50kButton.node.on(Button.EventType.CLICK, this.number50k, this);
+          this.number100kButton.node.on(Button.EventType.CLICK, this.number100k, this);
+          this.number200kButton.node.on(Button.EventType.CLICK, this.number200k, this);
+          this.number500kButton.node.on(Button.EventType.CLICK, this.number500k, this);
+          this.number1mButton.node.on(Button.EventType.CLICK, this.number1m, this);
+          this.number5mButton.node.on(Button.EventType.CLICK, this.number5m, this);
+          this.number10mButton.node.on(Button.EventType.CLICK, this.number10m, this);
+          this.closeBottomButton.node.on(Button.EventType.CLICK, this.closeBottom, this);
+          this.helpButton.node.on(Button.EventType.CLICK, this.showHelp, this);
+        };
+
+        _proto.show = function show(data) {
+          _BaseScreen.prototype.show.call(this, data);
+
+          this.number1kButton.interactable = true;
+          this.number5kButton.interactable = true;
+          this.number10kButton.interactable = true;
+          this.number50kButton.interactable = true;
+          this.number100kButton.interactable = true;
+          this.number200kButton.interactable = true;
+          this.number500kButton.interactable = true;
+          this.number1mButton.interactable = true;
+          this.number5mButton.interactable = true;
+          this.number10mButton.interactable = true;
+          this.closeBottomButton.interactable = true;
+          this.helpButton.interactable = true;
+          this.updatePlayerMoneyLabel(GameManager.instance.playerMoney);
+          this.timeLabel.node.active = true;
+          this.diceResultNode.active = false;
+          this.diceAnimationNode.active = false;
+          this.rotateEffectNode.active = false;
+        };
+
+        _proto.hide = function hide() {
+          _BaseScreen.prototype.hide.call(this);
+
+          this.number1kButton.interactable = false;
+          this.number5kButton.interactable = false;
+          this.number10kButton.interactable = false;
+          this.number50kButton.interactable = false;
+          this.number100kButton.interactable = false;
+          this.number200kButton.interactable = false;
+          this.number500kButton.interactable = false;
+          this.number1mButton.interactable = false;
+          this.number5mButton.interactable = false;
+          this.number10mButton.interactable = false;
+          this.closeBottomButton.interactable = false;
+          this.helpButton.interactable = false;
+        };
+
+        _proto.onDestroy = function onDestroy() {
+          ObserverManager.instance.off(ObserverEvent.RollDice, this._rollDiceHandler);
+          ObserverManager.instance.off(ObserverEvent.UpdateTimer, this._updateTimerHandler);
+          ObserverManager.instance.off(ObserverEvent.UpdatePlayerMoneyLabel, this.updatePlayerMoneyLabel.bind(this));
+          ObserverManager.instance.off(ObserverEvent.UpdateBigBetTotalLabel, this.updateBigBetTotalLabel.bind(this));
+          ObserverManager.instance.off(ObserverEvent.UpdateNumberPlayerBigBetLabel, this.updateNumberPlayerBigBetLabel.bind(this));
+          ObserverManager.instance.off(ObserverEvent.UpdateNumberBigBetOfPlayerLabel, this.updateNumberBigBetOfPlayerLabel.bind(this));
+          ObserverManager.instance.off(ObserverEvent.UpdateSmallBetTotalLabel, this.updateSmallBetTotalLabel.bind(this));
+          ObserverManager.instance.off(ObserverEvent.UpdateNumberPlayerSmallBetLabel, this.updateNumberPlayerSmallBetLabel.bind(this));
+          ObserverManager.instance.off(ObserverEvent.UpdateNumberSmallBetOfPlayerLabel, this.updateNumberSmallBetOfPlayerLabel.bind(this));
+          ObserverManager.instance.off(ObserverEvent.CoverResult, this.coverResult.bind(this));
+          this.number1kButton.node.off(Button.EventType.CLICK, this.number1k, this);
+          this.number5kButton.node.off(Button.EventType.CLICK, this.number5k, this);
+          this.number10kButton.node.off(Button.EventType.CLICK, this.number10k, this);
+          this.number50kButton.node.off(Button.EventType.CLICK, this.number50k, this);
+          this.number100kButton.node.off(Button.EventType.CLICK, this.number100k, this);
+          this.number200kButton.node.off(Button.EventType.CLICK, this.number200k, this);
+          this.number500kButton.node.off(Button.EventType.CLICK, this.number500k, this);
+          this.number1mButton.node.off(Button.EventType.CLICK, this.number1m, this);
+          this.number5mButton.node.off(Button.EventType.CLICK, this.number5m, this);
+          this.number10mButton.node.off(Button.EventType.CLICK, this.number10m, this);
+          this.closeBottomButton.node.off(Button.EventType.CLICK, this.closeBottom, this);
+          this.helpButton.node.off(Button.EventType.CLICK, this.showHelp, this);
+        } //#region Listeners
+        ;
+
+        _proto.coverResult = function coverResult(value) {
+          if (!value) this.showResultEffect(true);
+        };
+
+        _proto.updatePlayerMoneyLabel = function updatePlayerMoneyLabel(value) {
+          this.playerMoneyLabel.string = GameManager.instance.formatNumber(value);
+        } //Big
+        ;
+
+        _proto.updateBigBetTotalLabel = function updateBigBetTotalLabel(value) {
+          Tween.stopAllByTarget(this.bigBetTotalLabel.node);
+          tween(this.bigBetTotalLabel.node).to(this.TWEEN_TEXT_DURATION, {
+            scale: new Vec3(1, 1, 1).multiplyScalar(this.TWEEN_SCALE_FACTOR)
+          }, {
+            easing: 'quadOut'
+          }).to(this.TWEEN_TEXT_DURATION, {
+            scale: Vec3.ONE
+          }, {
+            easing: 'quadOut'
+          }).start();
+          this.bigBetTotalLabel.string = GameManager.instance.formatNumber(value);
+        };
+
+        _proto.updateNumberPlayerBigBetLabel = function updateNumberPlayerBigBetLabel(value) {
+          this.numberPlayerBigBetLabel.string = GameManager.instance.formatNumber(value);
+        };
+
+        _proto.updateNumberBigBetOfPlayerLabel = function updateNumberBigBetOfPlayerLabel(value) {
+          Tween.stopAllByTarget(this.numberBigBetOfPlayerLabel.node);
+          tween(this.numberBigBetOfPlayerLabel.node).to(this.TWEEN_TEXT_DURATION, {
+            scale: new Vec3(1, 1, 1).multiplyScalar(this.TWEEN_SCALE_FACTOR)
+          }, {
+            easing: 'quadOut'
+          }).to(this.TWEEN_TEXT_DURATION, {
+            scale: Vec3.ONE
+          }, {
+            easing: 'quadOut'
+          }).start();
+          this.numberBigBetOfPlayerLabel.string = 'Your Bet: ' + GameManager.instance.formatNumber(value);
+        } //Small
+        ;
+
+        _proto.updateSmallBetTotalLabel = function updateSmallBetTotalLabel(value) {
+          Tween.stopAllByTarget(this.smallBetTotalLabel.node);
+          tween(this.smallBetTotalLabel.node).to(this.TWEEN_TEXT_DURATION, {
+            scale: new Vec3(1, 1, 1).multiplyScalar(this.TWEEN_SCALE_FACTOR)
+          }, {
+            easing: 'quadOut'
+          }).to(this.TWEEN_TEXT_DURATION, {
+            scale: Vec3.ONE
+          }, {
+            easing: 'quadOut'
+          }).start();
+          this.smallBetTotalLabel.string = GameManager.instance.formatNumber(value);
+        };
+
+        _proto.updateNumberPlayerSmallBetLabel = function updateNumberPlayerSmallBetLabel(value) {
+          this.numberPlayerSmallBetLabel.string = GameManager.instance.formatNumber(value);
+        };
+
+        _proto.updateNumberSmallBetOfPlayerLabel = function updateNumberSmallBetOfPlayerLabel(value) {
+          Tween.stopAllByTarget(this.numberSmallBetOfPlayerLabel.node);
+          tween(this.numberSmallBetOfPlayerLabel.node).to(this.TWEEN_TEXT_DURATION, {
+            scale: new Vec3(1, 1, 1).multiplyScalar(this.TWEEN_SCALE_FACTOR)
+          }, {
+            easing: 'quadOut'
+          }).to(this.TWEEN_TEXT_DURATION, {
+            scale: Vec3.ONE
+          }, {
+            easing: 'quadOut'
+          }).start();
+          this.numberSmallBetOfPlayerLabel.string = 'Your Bet: ' + GameManager.instance.formatNumber(value);
+        };
+
+        _proto.updateTimer = function updateTimer(timer) {
+          this.diceResultNode.active = false;
+          this.diceAnimationNode.active = false;
+          this.rotateEffectNode.active = false;
+          this.timeLabel.string = timer.toString();
+          this.timeLabel.node.active = true;
+        } //#endregion
+        //#region Gameplay
+        ;
+
+        _proto.rollDice = function rollDice() {
+          var _this2 = this;
+
+          console.log('rollDice');
+          UIManager.instance.hideAll(UIType.Popup);
+          this.closeBottom();
+          this.dice1Number = Math.floor(Math.random() * 6) + 1;
+          this.dice2Number = Math.floor(Math.random() * 6) + 1;
+          this.dice3Number = Math.floor(Math.random() * 6) + 1;
+          this.totalNumber = this.dice1Number + this.dice2Number + this.dice3Number;
+          this.animationRollDice(function () {
+            console.log('animationRollDice callback');
+
+            _this2.showResultEffect(!GameManager.instance.isShowHand);
+          });
+        };
+
+        _proto.animationRollDice = /*#__PURE__*/function () {
+          var _animationRollDice = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(callback) {
+            return _regeneratorRuntime().wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    console.log('animationRollDice');
+                    ObserverManager.instance.emit(ObserverEvent.LockHand, true);
+                    this.timeLabel.node.active = false;
+                    this.diceAnimationNode.active = true;
+                    this.rotateEffectNode.active = true;
+                    this.diceAnimation.play();
+                    _context.next = 8;
+                    return GameManager.instance.delay(1250);
+
+                  case 8:
+                    callback();
+
+                  case 9:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+
+          function animationRollDice(_x) {
+            return _animationRollDice.apply(this, arguments);
+          }
+
+          return animationRollDice;
+        }();
+
+        _proto.updateDiceSprites = function updateDiceSprites() {
+          console.log('updateDiceSprites');
+          this.timeLabel.node.active = false;
+          this.diceAnimationNode.active = false;
+          this.rotateEffectNode.active = false;
+          this.dice1Sprite.spriteFrame = this.diceSprites[this.dice1Number - 1];
+          this.dice2Sprite.spriteFrame = this.diceSprites[this.dice2Number - 1];
+          this.dice3Sprite.spriteFrame = this.diceSprites[this.dice3Number - 1];
+          this.diceResultNode.active = true;
+        };
+
+        _proto.showResultEffect = function showResultEffect(forceShow) {
+          console.log('showResultEffect', forceShow);
+
+          if (forceShow) {
+            try {
+              if (this.totalNumber < 11) {
+                GameManager.instance.playerMoney += GameManager.instance.numberSmallBetOfPlayer * 2;
+                GameManager.instance.dotResult.push(true);
+                this.lightRotateEffect.showLight(this.smallTitleNode.worldPosition);
+                if (GameManager.instance.numberSmallBetOfPlayer > 0) this.bubbleLabel.show('+' + GameManager.instance.numberSmallBetOfPlayer * 2, this.playerMoneyLabel.node.worldPosition, Vec3.UP, Color.YELLOW);
+              } else {
+                GameManager.instance.playerMoney += GameManager.instance.numberBigBetOfPlayer * 2;
+                GameManager.instance.dotResult.push(false);
+                this.lightRotateEffect.showLight(this.bigTitleNode.worldPosition);
+                if (GameManager.instance.numberBigBetOfPlayer > 0) this.bubbleLabel.show('+' + GameManager.instance.numberBigBetOfPlayer * 2, this.playerMoneyLabel.node.worldPosition, Vec3.UP, Color.CYAN);
+              }
+            } catch (e) {
+              console.error('showResultEffect error:', e);
+            }
+
+            GameManager.instance.dotResult.shift();
+            GameManager.instance.bigBetTotal = 0;
+            GameManager.instance.numberPlayerBigBet = 0;
+            GameManager.instance.numberBigBetOfPlayer = 0;
+            GameManager.instance.smallBetTotal = 0;
+            GameManager.instance.numberPlayerSmallBet = 0;
+            GameManager.instance.numberSmallBetOfPlayer = 0;
+            GameManager.instance.betType = BetType.None;
+            ObserverManager.instance.emit(ObserverEvent.UpdateDotResult, GameManager.instance.dotResult);
+            ObserverManager.instance.emit(ObserverEvent.LockHand, false);
+            GameManager.instance.resetCountdown();
+          } else {
+            this.coverResultNode.active = true;
+          }
+
+          this.updateDiceSprites();
+        } //#endregion
+        //#region Bottom
+        ;
+
+        _proto.showBottom = function showBottom() {
+          console.log('showBottom');
+
+          if (!this._isShowBottom) {
+            this._isShowBottom = true;
+            tween(this.bottomUITransform).to(0.5, {
+              height: 200
+            }, {
+              easing: 'quadOut'
+            }).start();
+            tween(this.maskBottomUITransform).to(0.5, {
+              height: 200
+            }, {
+              easing: 'quadOut'
+            }).start();
+          }
+
+          if (GameManager.instance.betType == BetType.Big) {
+            this.bigBetButton.node.active = false;
+            this.smallBetButton.node.active = true;
+          } else {
+            this.bigBetButton.node.active = true;
+            this.smallBetButton.node.active = false;
+          }
+
+          this.closeBottomButton.interactable = true;
+        };
+
+        _proto.closeBottom = function closeBottom() {
+          this.closeBottomButton.interactable = false;
+
+          if (this._isShowBottom) {
+            this._isShowBottom = false;
+            tween(this.bottomUITransform).to(0.5, {
+              height: 0
+            }, {
+              easing: 'quadOut'
+            }).start();
+            tween(this.maskBottomUITransform).to(0.5, {
+              height: 0
+            }, {
+              easing: 'quadOut'
+            }).start();
+          }
+
+          this.bigBetButton.node.active = true;
+          this.smallBetButton.node.active = true;
+        };
+
+        _proto.updateDataOnBet = function updateDataOnBet(betNumber) {
+          if (GameManager.instance.playerMoney >= betNumber) {
+            GameManager.instance.playerMoney -= betNumber;
+            ObserverManager.instance.emit(ObserverEvent.NumberBet, betNumber);
+          } else if (GameManager.instance.playerMoney > 0) {
+            var currentMoney = GameManager.instance.playerMoney;
+            GameManager.instance.playerMoney = 0;
+            ObserverManager.instance.emit(ObserverEvent.NumberBet, currentMoney);
+          } else this.bubbleLabel.show('Not enough money', this.playerMoneyLabel.node.worldPosition, Vec3.UP, Color.RED, .75);
+        } //#region Bet
+        ;
+
+        _proto.number1k = function number1k() {
+          this.updateDataOnBet(1000);
+        };
+
+        _proto.number5k = function number5k() {
+          this.updateDataOnBet(5000);
+        };
+
+        _proto.number10k = function number10k() {
+          this.updateDataOnBet(10000);
+        };
+
+        _proto.number50k = function number50k() {
+          this.updateDataOnBet(50000);
+        };
+
+        _proto.number100k = function number100k() {
+          this.updateDataOnBet(100000);
+        };
+
+        _proto.number200k = function number200k() {
+          this.updateDataOnBet(200000);
+        };
+
+        _proto.number500k = function number500k() {
+          this.updateDataOnBet(500000);
+        };
+
+        _proto.number1m = function number1m() {
+          this.updateDataOnBet(1000000);
+        };
+
+        _proto.number5m = function number5m() {
+          this.updateDataOnBet(5000000);
+        };
+
+        _proto.number10m = function number10m() {
+          this.updateDataOnBet(10000000);
+        } //#endregion
+        //#endregion
+        //#region Button
+        ;
+
+        _proto.showHelp = function showHelp() {
+          UIManager.instance.showPopup(PopupHelp, null, true);
+        } //#endregion
+        ;
+
+        return ScreenGame;
+      }(BaseScreen), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "playerMoneyLabel", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "numberPlayerBigBetLabel", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "numberPlayerSmallBetLabel", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "numberBigBetOfPlayerLabel", [_dec5], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "bigBetTotalLabel", [_dec6], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "bigTitleNode", [_dec7], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "bigBetButton", [_dec8], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, "numberSmallBetOfPlayerLabel", [_dec9], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, "smallBetTotalLabel", [_dec10], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, "smallTitleNode", [_dec11], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, "smallBetButton", [_dec12], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor12 = _applyDecoratedDescriptor(_class2.prototype, "diceResultNode", [_dec13], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor13 = _applyDecoratedDescriptor(_class2.prototype, "dice1Sprite", [_dec14], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor14 = _applyDecoratedDescriptor(_class2.prototype, "dice2Sprite", [_dec15], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor15 = _applyDecoratedDescriptor(_class2.prototype, "dice3Sprite", [_dec16], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor16 = _applyDecoratedDescriptor(_class2.prototype, "diceAnimationNode", [_dec17], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor17 = _applyDecoratedDescriptor(_class2.prototype, "diceAnimation", [_dec18], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor18 = _applyDecoratedDescriptor(_class2.prototype, "diceSprites", [_dec19], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return [];
+        }
+      }), _descriptor19 = _applyDecoratedDescriptor(_class2.prototype, "timeLabel", [_dec20], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor20 = _applyDecoratedDescriptor(_class2.prototype, "rotateEffectNode", [_dec21], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor21 = _applyDecoratedDescriptor(_class2.prototype, "coverResultNode", [_dec22], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor22 = _applyDecoratedDescriptor(_class2.prototype, "lightRotateEffect", [_dec23], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor23 = _applyDecoratedDescriptor(_class2.prototype, "bubbleLabel", [_dec24], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor24 = _applyDecoratedDescriptor(_class2.prototype, "bottomUITransform", [_dec25], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor25 = _applyDecoratedDescriptor(_class2.prototype, "maskBottomUITransform", [_dec26], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor26 = _applyDecoratedDescriptor(_class2.prototype, "number1kButton", [_dec27], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor27 = _applyDecoratedDescriptor(_class2.prototype, "number5kButton", [_dec28], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor28 = _applyDecoratedDescriptor(_class2.prototype, "number10kButton", [_dec29], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor29 = _applyDecoratedDescriptor(_class2.prototype, "number50kButton", [_dec30], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor30 = _applyDecoratedDescriptor(_class2.prototype, "number100kButton", [_dec31], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor31 = _applyDecoratedDescriptor(_class2.prototype, "number200kButton", [_dec32], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor32 = _applyDecoratedDescriptor(_class2.prototype, "number500kButton", [_dec33], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor33 = _applyDecoratedDescriptor(_class2.prototype, "number1mButton", [_dec34], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor34 = _applyDecoratedDescriptor(_class2.prototype, "number5mButton", [_dec35], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor35 = _applyDecoratedDescriptor(_class2.prototype, "number10mButton", [_dec36], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor36 = _applyDecoratedDescriptor(_class2.prototype, "closeBottomButton", [_dec37], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor37 = _applyDecoratedDescriptor(_class2.prototype, "helpButton", [_dec38], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/SmallBet.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './BetBase.ts', './GameManager.ts'], function (exports) {
+  'use strict';
+
+  var _inheritsLoose, cclegacy, _decorator, BetType, BetBase, GameManager;
+
+  return {
+    setters: [function (module) {
+      _inheritsLoose = module.inheritsLoose;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+    }, function (module) {
+      BetType = module.BetType;
+      BetBase = module.BetBase;
+    }, function (module) {
+      GameManager = module.GameManager;
+    }],
+    execute: function () {
+      var _dec, _class;
+
+      cclegacy._RF.push({}, "c25d6l9EddLFqCb6P0/KmMl", "SmallBet", undefined);
+
+      var ccclass = _decorator.ccclass;
+      var SmallBet = exports('SmallBet', (_dec = ccclass('SmallBet'), _dec(_class = /*#__PURE__*/function (_BetBase) {
+        _inheritsLoose(SmallBet, _BetBase);
+
+        function SmallBet() {
+          return _BetBase.apply(this, arguments) || this;
+        }
+
+        var _proto = SmallBet.prototype;
+
+        _proto.start = function start() {
+          this.betType = BetType.Small;
+        };
+
+        _proto.onBetNumber = function onBetNumber(number) {
+          if (this.betType !== GameManager.instance.betType) return;
+          GameManager.instance.numberPlayerSmallBet++;
+          GameManager.instance.smallBetTotal += number;
+          GameManager.instance.numberSmallBetOfPlayer += number;
+        };
+
+        return SmallBet;
+      }(BetBase)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/UIManager.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './BaseManager.ts', './BaseNotify.ts', './BaseOverlap.ts', './BasePopup.ts', './BaseScreen.ts', './BaseUI.ts', './GameManager.ts'], function (exports) {
+  'use strict';
+
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, _createForOfIteratorHelperLoose, _asyncToGenerator, _regeneratorRuntime, cclegacy, _decorator, Button, Node, instantiate, resources, Prefab, BaseManager, BaseNotify, BaseOverlap, BasePopup, BaseScreen, UIType, GameManager;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+      _createForOfIteratorHelperLoose = module.createForOfIteratorHelperLoose;
+      _asyncToGenerator = module.asyncToGenerator;
+      _regeneratorRuntime = module.regeneratorRuntime;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Button = module.Button;
+      Node = module.Node;
+      instantiate = module.instantiate;
+      resources = module.resources;
+      Prefab = module.Prefab;
+    }, function (module) {
+      BaseManager = module.BaseManager;
+    }, function (module) {
+      BaseNotify = module.BaseNotify;
+    }, function (module) {
+      BaseOverlap = module.BaseOverlap;
+    }, function (module) {
+      BasePopup = module.BasePopup;
+    }, function (module) {
+      BaseScreen = module.BaseScreen;
+    }, function (module) {
+      UIType = module.UIType;
+    }, function (module) {
+      GameManager = module.GameManager;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
+
+      cclegacy._RF.push({}, "b4b26h3Z0xB4K4my1WzLa0e", "UIManager", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var UIManager = exports('UIManager', (_dec = ccclass('UIManager'), _dec2 = property(Button), _dec3 = property(Button), _dec4 = property(Node), _dec5 = property(Node), _dec6 = property(Node), _dec7 = property(Node), _dec(_class = (_class2 = /*#__PURE__*/function (_BaseManager) {
+        _inheritsLoose(UIManager, _BaseManager);
+
+        function UIManager() {
+          var _this$caches, _this$curUI;
+
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _BaseManager.call.apply(_BaseManager, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "depositButton", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "withdrawButton", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "cScreen", _descriptor3, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "cPopup", _descriptor4, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "cOverlap", _descriptor5, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "cNotify", _descriptor6, _assertThisInitialized(_this));
+
+          _this.roots = {};
+          _this.caches = (_this$caches = {}, _this$caches[UIType.Screen] = new Map(), _this$caches[UIType.Popup] = new Map(), _this$caches[UIType.Notify] = new Map(), _this$caches[UIType.Overlap] = new Map(), _this$caches);
+          _this.curUI = (_this$curUI = {}, _this$curUI[UIType.Screen] = null, _this$curUI[UIType.Popup] = null, _this$curUI[UIType.Notify] = null, _this$curUI[UIType.Overlap] = null, _this$curUI);
+          _this.UI_PATH = 'Prefabs/UI/';
+          return _this;
+        }
+
+        var _proto = UIManager.prototype;
+
+        _proto.onLoad = function onLoad() {
+          _BaseManager.prototype.onLoad.call(this);
+
+          this.roots[UIType.Screen] = this.cScreen;
+          this.roots[UIType.Popup] = this.cPopup;
+          this.roots[UIType.Notify] = this.cNotify;
+          this.roots[UIType.Overlap] = this.cOverlap;
+          this.depositButton.node.on(Button.EventType.CLICK, this.onDepositButtonClick, this);
+          this.withdrawButton.node.on(Button.EventType.CLICK, this.onWithdrawButtonClick, this);
+        } //#region === CORE ===
+        ;
+
+        _proto.show = /*#__PURE__*/function () {
+          var _show = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(ctor, // constructor
+          type, data, forceShow) {
+            var name, cache, cur, ui;
+            return _regeneratorRuntime().wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    if (forceShow === void 0) {
+                      forceShow = false;
+                    }
+
+                    name = ctor.name;
+                    cache = this.caches[type];
+                    cur = this.curUI[type];
+
+                    if (type === UIType.Screen && cur && cur.constructor.name !== name) {
+                      cur.hide();
+                    }
+
+                    ui = cache.get(name);
+
+                    if (ui) {
+                      _context.next = 12;
+                      break;
+                    }
+
+                    console.log('ui null, create new UI', name);
+                    _context.next = 10;
+                    return this.createUI(type, name);
+
+                  case 10:
+                    ui = _context.sent;
+                    cache.set(name, ui);
+
+                  case 12:
+                    if (ui && (forceShow || !ui.IsShow)) {
+                      console.log('has cache, show UI', name);
+                      this.curUI[type] = ui;
+                      ui.node.setSiblingIndex(ui.node.parent.children.length - 1);
+                      ui.show(data);
+                    }
+
+                    return _context.abrupt("return", ui);
+
+                  case 14:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+
+          function show(_x, _x2, _x3, _x4) {
+            return _show.apply(this, arguments);
+          }
+
+          return show;
+        }();
+
+        _proto.hideAll = function hideAll(type) {
+          for (var _iterator = _createForOfIteratorHelperLoose(this.caches[type]), _step; !(_step = _iterator()).done;) {
+            var _step$value = _step.value,
+                ui = _step$value[1];
+            if (ui.IsShow) ui.hide();
+          }
+        };
+
+        _proto.createUI = /*#__PURE__*/function () {
+          var _createUI = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(type, name) {
+            var path, pf, node, parent, comp;
+            return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    path = "" + this.UI_PATH + type + "/" + name;
+                    _context2.next = 3;
+                    return this.loadPrefab(path);
+
+                  case 3:
+                    pf = _context2.sent;
+                    node = instantiate(pf);
+                    parent = this.roots[type];
+
+                    if (!parent) {
+                      console.error("[UIManager] Root node for " + UIType[type] + " is not set!");
+                    } else {
+                      parent.addChild(node);
+                    }
+
+                    comp = node.getComponent(name);
+                    comp.init == null ? void 0 : comp.init();
+                    return _context2.abrupt("return", comp);
+
+                  case 10:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2, this);
+          }));
+
+          function createUI(_x5, _x6) {
+            return _createUI.apply(this, arguments);
+          }
+
+          return createUI;
+        }();
+
+        _proto.loadPrefab = /*#__PURE__*/function () {
+          var _loadPrefab = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(path) {
+            return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    return _context3.abrupt("return", new Promise(function (resolve, reject) {
+                      resources.load(path, Prefab, function (err, prefab) {
+                        if (err || !prefab) reject(err);else resolve(prefab);
+                      });
+                    }));
+
+                  case 1:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3);
+          }));
+
+          function loadPrefab(_x7) {
+            return _loadPrefab.apply(this, arguments);
+          }
+
+          return loadPrefab;
+        }() //#endregion
+        //#region === SHORTCUT ===
+        ;
+
+        _proto.showScreen = function showScreen(ctor, data, force) {
+          if (force === void 0) {
+            force = false;
+          }
+
+          return this.show(ctor, UIType.Screen, data, force);
+        };
+
+        _proto.showPopup = function showPopup(ctor, data, force) {
+          if (force === void 0) {
+            force = false;
+          }
+
+          return this.show(ctor, UIType.Popup, data, force);
+        };
+
+        _proto.showNotify = function showNotify(ctor, data, force) {
+          if (force === void 0) {
+            force = false;
+          }
+
+          return this.show(ctor, UIType.Notify, data, force);
+        };
+
+        _proto.showOverlap = function showOverlap(ctor, data, force) {
+          if (force === void 0) {
+            force = false;
+          }
+
+          return this.show(ctor, UIType.Overlap, data, force);
+        };
+
+        _proto.getExistUI = function getExistUI(ctor) {
+          var name = ctor.name;
+          var type;
+          if (ctor.prototype instanceof BaseScreen) type = UIType.Screen;else if (ctor.prototype instanceof BasePopup) type = UIType.Popup;else if (ctor.prototype instanceof BaseNotify) type = UIType.Notify;else if (ctor.prototype instanceof BaseOverlap) type = UIType.Overlap;else {
+            console.warn("[UIManager] Unknown UI type for " + name);
+            return null;
+          }
+          var cache = this.caches[type];
+          return cache.get(name) || null;
+        } //#endregion
+        ;
+
+        _proto.onDepositButtonClick = function onDepositButtonClick() {
+          GameManager.instance.playerMoney += 10000;
+        };
+
+        _proto.onWithdrawButtonClick = function onWithdrawButtonClick() {
+          GameManager.instance.playerMoney -= 10000;
+        };
+
+        return UIManager;
+      }(BaseManager), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "depositButton", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "withdrawButton", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "cScreen", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "cPopup", [_dec5], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "cOverlap", [_dec6], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "cNotify", [_dec7], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/WebViewController.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  'use strict';
+
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, WebView, Button, UITransform, Component;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      WebView = module.WebView;
+      Button = module.Button;
+      UITransform = module.UITransform;
+      Component = module.Component;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
+
+      cclegacy._RF.push({}, "15185SUBRhETK4PwuZE7z+z", "WebViewController", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var WebViewController = exports('WebViewController', (_dec = ccclass('WebViewController'), _dec2 = property(WebView), _dec3 = property(Button), _dec4 = property(Button), _dec5 = property({
+        tooltip: 'URL cần mở'
+      }), _dec6 = property({
+        tooltip: 'Width của WebView'
+      }), _dec7 = property({
+        tooltip: 'Height của WebView'
+      }), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(WebViewController, _Component);
+
+        function WebViewController() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "webview", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "openButton", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "closeButton", _descriptor3, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "url", _descriptor4, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "width", _descriptor5, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "height", _descriptor6, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = WebViewController.prototype;
+
+        _proto.start = function start() {
+          // Ẩn WebView lúc đầu
+          this.webview.node.active = false; // Resize node WebView
+
+          this.webview.node.getComponent(UITransform).setContentSize(this.width, this.height);
+          this.webview.node.setPosition(0, 0, 0); // đặt giữa Canvas
+          // Button mở WebView
+
+          if (this.openButton) {
+            this.openButton.node.on('click', this.openWebView, this);
+          } // Button đóng WebView
+
+
+          if (this.closeButton) {
+            this.closeButton.node.on('click', this.closeWebView, this);
+          } // Lắng nghe WebView events
+
+
+          this.webview.node.on(WebView.EventType.LOADING, this.onLoadStart, this);
+          this.webview.node.on(WebView.EventType.LOADED, this.onLoadFinish, this);
+          this.webview.node.on(WebView.EventType.ERROR, this.onLoadError, this);
+        };
+
+        _proto.openWebView = function openWebView() {
+          this.webview.url = this.url;
+          this.webview.node.active = true;
+        };
+
+        _proto.closeWebView = function closeWebView() {
+          this.webview.node.active = false;
+          this.webview.url = ''; // reset URL
+        } // Event handlers
+        ;
+
+        _proto.onLoadStart = function onLoadStart() {
+          console.log('WebView bắt đầu tải URL:', this.url);
+        };
+
+        _proto.onLoadFinish = function onLoadFinish() {
+          console.log('WebView tải xong URL:', this.url);
+        };
+
+        _proto.onLoadError = function onLoadError() {
+          console.warn('WebView tải lỗi URL:', this.url);
+        };
+
+        return WebViewController;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "webview", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "openButton", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "closeButton", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "url", [_dec5], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 'https://example.com';
+        }
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "width", [_dec6], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 600;
+        }
+      }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "height", [_dec7], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 400;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
 
 (function(r) {
   r('virtual:///prerequisite-imports/main', 'chunks:///_virtual/main'); 
