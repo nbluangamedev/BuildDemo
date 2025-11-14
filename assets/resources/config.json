@@ -1,17 +1,1 @@
-{
-    "importBase": "import",
-    "nativeBase": "native",
-    "name": "resources",
-    "deps": [],
-    "uuids": [],
-    "paths": {},
-    "scenes": {},
-    "packs": {},
-    "versions": {
-        "import": [],
-        "native": []
-    },
-    "redirect": [],
-    "debug": true,
-    "extensionMap": {}
-}
+{"importBase":"import","nativeBase":"native","name":"resources","deps":[],"uuids":["01024bd94","02jwL1q7xH2ocLFNhYXk1w","b8/MgTXgBMPJxfNIQmZr9k","01xwBUbEtPSb8IBEj25VL0@f9941","03u7JmvCRKipezw2gnOWKz@f9941","03e2c5900","05GiQrNClPQYbERuz137rP@f9941","06keyLwSNPL7ZdZuPF5Luz@f9941","09773b3ec","09d1b39b3","0b1dc6807","0fmWjd1TtI/56tsodcUZzy@f9941","15YE4ZFq1G7renLxzOu6wm@f9941","19773b3ec","19773b3ec@6c48a","20g1ukYUVPvKWKBRznAKo+","20g1ukYUVPvKWKBRznAKo+@6c48a","20g1ukYUVPvKWKBRznAKo+@f9941","22CJ9ER0lIBrt0yj6W/UUB@f9941","24xBnqY6hOoanQf8RpSJu8","24xBnqY6hOoanQf8RpSJu8@6c48a","24xBnqY6hOoanQf8RpSJu8@f9941","26nYDSUj9E5qp9CBxHMzyu","27O0tW3jZEZYBmV+xHKOHG@f9941","2b7m5BwwJDnJE49CU3PXBv@f9941","2eGLmf++lP+JKEt5t/TiPG@f9941","3djnsK8RNOPIs3v3171j0P@f9941","45n8x/ezxFu5QI8KwzvpCi","46ANoaB5tGxbm6a6WGFKmx@f9941","4eLKOt8N1B6IXXfK1e8uVm@f9941","517tuowKtM+rwzGvLe5zcR@f9941","53LhMCp6FKXaahw2Az7RKz","53LhMCp6FKXaahw2Az7RKz@6c48a","54TknWPwVPqJqeCR+Y/Czo","54TknWPwVPqJqeCR+Y/Czo@6c48a","54TknWPwVPqJqeCR+Y/Czo@f9941","549MMDLSBGZoQhzo/QSbvF@f9941","64FjDDcD9KUob5bxFsbtDu@f9941","658d3T1aZK25cMTCnMSoOZ@f9941","68Q4RQAkRPPb3AZd9T4zpE@f9941","76m6LeaUlESrxlulOTXql6","78Z8GrU0pPJZM9bRte8SKP@f9941","7dVzu6qcBETY+W6DM60Jbr@f9941","85qxJS1OdNh6RHuaWvW24f@f9941","94psAkSmdPsYDhPSsljx+N","95EkngnxZFbYuFpsqVTaFr","95EkngnxZFbYuFpsqVTaFr@6c48a","95EkngnxZFbYuFpsqVTaFr@f9941","98iV+Wg8VJUqxOCetP7O0t","a0cmfARDdNFrYbrjiAfQLs@f9941","a8A0qUvQ5PWLuNPJG+1ySf@f9941","abdwP7nZdAIp7UYMw0gXxF@f9941","b7BkgfxeNN+Yq70kP4gR6z@f9941","bcrxhuP2JAILeDj7jKTpU4@f9941","bdNNRcBtxA9rM8m3/XJPz5","c2RxQqRxZOeJ73B5iD2q1E@f9941","c2mb7ANvpJiaLw+n1JfdU5@0b280","c2mb7ANvpJiaLw+n1JfdU5@12d0f","c2mb7ANvpJiaLw+n1JfdU5@16ba1","c2mb7ANvpJiaLw+n1JfdU5@1c015","c2mb7ANvpJiaLw+n1JfdU5@520d6","c2mb7ANvpJiaLw+n1JfdU5@52947","c2mb7ANvpJiaLw+n1JfdU5@5fb72","c2mb7ANvpJiaLw+n1JfdU5@6c32e","c2mb7ANvpJiaLw+n1JfdU5@6f0c1","c2mb7ANvpJiaLw+n1JfdU5@796e3","c2mb7ANvpJiaLw+n1JfdU5@92b20","c2mb7ANvpJiaLw+n1JfdU5@b4a13","c2mb7ANvpJiaLw+n1JfdU5@c6c24","c2mb7ANvpJiaLw+n1JfdU5@fb027","cbj4FnOPRFDpa/k5sj5dys@f9941","ccnlORju9IiLOQfnI1YVeJ@f9941","d0sHXFTp5DU5Zth78UMLaR@f9941","d1RZ4uhXxDmZjNiNL69wa5@f9941","d3UajO0gRLwZWgYqULcytL@f9941","d4WAvWLUdHPKzPWId2EGhj@f9941","d5s6T09zdPkqsz1VhCm1D0","d8zoEDZyxJ4Z+7rHaxE5PY","dcuzuopFFOLpdCuKiBN7JT@f9941","edxr9aNvVB2J1+FvdwASdC@f9941","ed3sCfuthMEbcIiM1GPWCA@f9941"],"paths":{"1":["Prefabs/UI/Screen/ScreenGame",0],"2":["Prefabs/UI/Popup/PopupHelp",0],"54":["Prefabs/UI/Overlap/OverlapLoading",0]},"scenes":{},"packs":{"01024bd94":["20","32","34","14","16","46"],"03e2c5900":["19","31","33","13","15","45"],"09773b3ec":["3","4","6","7","11","12","18","23","24","25","26","28","29","30","36","37","38","39","41","42","43","49","50","51","52","53","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","78","79","80"],"09d1b39b3":["17","35","47","2"],"0b1dc6807":["1","21","22","27","44","48","76","77"]},"versions":{"import":[],"native":[]},"redirect":[],"debug":false,"extensionMap":{".cconb":["40"]},"types":["cc.Prefab"]}
