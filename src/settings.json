@@ -2,7 +2,7 @@
     "CocosEngine": "3.6.3",
     "engine": {
         "debug": true,
-        "platform": "web-desktop",
+        "platform": "web-mobile",
         "customLayers": [],
         "macros": {},
         "builtinAssets": [
@@ -63,12 +63,13 @@
         "launchScene": "db://assets/scenes/loading.scene"
     },
     "screen": {
-        "exactFitScreen": false,
+        "exactFitScreen": true,
         "designResolution": {
             "width": 1280,
             "height": 720,
             "policy": 2
-        }
+        },
+        "orientation": "landscape"
     },
     "physics": {
         "physicsEngine": "",

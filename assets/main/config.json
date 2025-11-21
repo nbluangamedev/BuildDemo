@@ -2,14 +2,8 @@
     "importBase": "import",
     "nativeBase": "native",
     "name": "main",
-    "deps": [
-        "resources"
-    ],
+    "deps": [],
     "uuids": [
-        "20835ba4-6145-4fbc-a58a-051ce700aa3e@f9941",
-        "36ffb938-8909-4c90-bf08-0fdb9a5483f8",
-        "544e49d6-3f05-4fa8-9a9e-091f98fc2ce8@f9941",
-        "951249e0-9f16-456d-8b85-a6ca954da16b@f9941",
         "a45ccc4d-f62a-448e-ab31-889ab6be2b09",
         "fd8ec536-a354-4a17-9c74-4f3883c378c8"
     ],
@@ -20,7 +14,6 @@
         ]
     },
     "scenes": {
-        "db://assets/scenes/gameplay.scene": "36ffb938-8909-4c90-bf08-0fdb9a5483f8",
         "db://assets/scenes/loading.scene": "a45ccc4d-f62a-448e-ab31-889ab6be2b09"
     },
     "packs": {},
@@ -28,14 +21,7 @@
         "import": [],
         "native": []
     },
-    "redirect": [
-        "20835ba4-6145-4fbc-a58a-051ce700aa3e@f9941",
-        "0",
-        "544e49d6-3f05-4fa8-9a9e-091f98fc2ce8@f9941",
-        "0",
-        "951249e0-9f16-456d-8b85-a6ca954da16b@f9941",
-        "0"
-    ],
+    "redirect": [],
     "debug": true,
     "extensionMap": {}
 }
