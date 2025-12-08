@@ -2,9 +2,12 @@
     "importBase": "import",
     "nativeBase": "native",
     "name": "main",
-    "deps": [],
+    "deps": [
+        "resources"
+    ],
     "uuids": [
         "a45ccc4d-f62a-448e-ab31-889ab6be2b09",
+        "ebcc1834-0d55-4501-a6fd-2ea8cb687d99",
         "fd8ec536-a354-4a17-9c74-4f3883c378c8"
     ],
     "paths": {
@@ -21,7 +24,10 @@
         "import": [],
         "native": []
     },
-    "redirect": [],
+    "redirect": [
+        "ebcc1834-0d55-4501-a6fd-2ea8cb687d99",
+        "0"
+    ],
     "debug": true,
     "extensionMap": {}
 }
